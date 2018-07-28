@@ -1,0 +1,52 @@
+- alias: Turn on light when motion is detected
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_158d0001e542b5
+      to: 'on'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.gateway_light_7811dcb2472f
+        brightness: 170
+        color_name: blue
+    #- service: switch.turn_on
+    #  entity_id: switch.nuc_flash_green
+
+- alias: Turn off light motion
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_158d0001e542b5
+      to: 'off'
+  action:
+    - service: light.turn_off
+      data:
+        entity_id: light.gateway_light_7811dcb2472f
+    #- service: switch.turn_off
+    #  entity_id: switch.nuc_flash_green
+
+# Test ...
+- alias: Turn green simple click
+  trigger:
+    - platform: event
+      event_type: click
+      event_data:
+        event_id: binary_sensor.wall_switch_left_158XXXXXXXXX
+        click_type: single
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.gateway_light_7811dcb2472f
+        brightness: 170
+        color_name: green
+        
+- alias: Turn off
+  trigger:
+    - platform: event
+      event_type: click
+      event_data:
+        event_id: binary_sensor.wall_switch_left_158XXXXXXXXX
+        click_type: double
+  action:
+    - service: light.turn_off
+      data:
+        entity_id: light.gateway_light_7811dcb2472f
