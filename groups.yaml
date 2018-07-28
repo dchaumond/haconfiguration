@@ -1,0 +1,88 @@
+desk:
+  name: Salon
+  entities:
+    - binary_sensor.switch_158d0001d62031
+    - binary_sensor.motion_sensor_158d0001e542b5
+    - binary_sensor.door_window_sensor_158d0001bc41d3
+    - light.gateway_light_7811dcb2472f   
+    - switch.tv_switch
+    - switch.sapin_switch
+    
+temperature:
+  name: Temperature
+  entities:
+    - sensor.temperature_158d0002239fad
+    - sensor.humidity_158d0002239fad
+    - sensor.pressure_158d0002239fad
+    - sensor.temperature_158d0001f238fe
+    - sensor.humidity_158d0001f238fe   
+    - sensor.pressure_158d0001f238fe
+    - sensor.temperature_158d0002239fc5
+    - sensor.humidity_158d0002239fc5  
+    - sensor.pressure_158d0002239fc5
+    - sensor.temperature_158d000223a28f
+    - sensor.humidity_158d000223a28f
+    - sensor.pressure_158d000223a28f
+    - sensor.temperature_158d0002272daf
+    - sensor.humidity_158d0002272daf
+    - sensor.pressure_158d0002272daf
+    - sensor.temperature_158d00022733b2
+    - sensor.humidity_158d00022733b2
+    - sensor.pressure_158d00022733b2
+
+motion_sensors:
+  name: Mouvements
+  entities:
+    - binary_sensor.motion_sensor_158d0001e542b5
+    - binary_sensor.motion_sensor_158d000222e329
+    - binary_sensor.door_window_sensor_158d0001bc41d3
+    - binary_sensor.door_window_sensor_158d0001c1d94d
+    - binary_sensor.door_window_sensor_158d0001c20a79
+    
+switchs:
+  name: Commandes
+  entities:
+    - binary_sensor.switch_158d0001d62031
+    - switch.sonoff6674
+    - switch.sonoff7184
+    - switch.sonoff7339
+ 
+lights:
+  name: Eclairages à Led
+  entities:
+    - light.gateway_light_7811dcb2472f
+
+daily_forecast:
+    name: Meteo a venir
+    entities:
+      - sensor.pws_temp_c
+      - sensor.pws_location
+      - sensor.pws_weather_1d_metric
+      - sensor.pws_weather_1n_metric
+      - sensor.pws_weather_2d_metric
+      - sensor.pws_weather_2n_metric
+      - sensor.pws_weather_3d_metric
+      - sensor.pws_weather_3n_metric
+      - sensor.pws_weather_4d_metric
+      - sensor.pws_weather_4n_metric
+    
+home_view:
+  name: Maison
+  view: yes
+  entities:
+    - sun.sun
+    - group.desk
+    
+weather_view:
+  name: Meteo
+  view: yes
+  entities:
+    - group.daily_forecast
+       
+sensor_view:
+  name: Capteurs
+  view: yes
+  icon: mdi:gauge
+  entities:
+    - group.temperature
+    - group.motion_sensors

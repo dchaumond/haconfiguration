@@ -1,0 +1,78 @@
+
+binary_sensor.motion_sensor_158d0001e542b5:
+  friendly_name: Detecteur entree
+
+binary_sensor.motion_sensor_158d000222e329:
+  friendly_name: Detecteur chambre
+
+sensor.temperature_158d0002239fad:
+  friendly_name: Temperature chambre
+sensor.humidity_158d0002239fad:
+  friendly_name: Humidite chambre
+sensor.pressure_158d0002239fad:
+    friendly_name: Pression chambre
+      
+sensor.temperature_158d0001f238fe:
+  friendly_name: Temperature salle de bains bas
+sensor.humidity_158d0001f238fe:
+  friendly_name: Humidite salle de bains bas
+sensor.pressure_158d0001f238fe:
+  friendly_name: Pression salle de bains bas
+
+sensor.temperature_158d0002239fc5:
+  friendly_name: Temperature chambre Julien
+sensor.humidity_158d0002239fc5:
+  friendly_name: Humidite chambre Julien
+sensor.pressure_158d0002239fc5:
+  friendly_name: Pression chambre Julien
+    
+sensor.temperature_158d000223a28f:
+  friendly_name: Temperature salle bains haut
+sensor.humidity_158d000223a28f:
+  friendly_name: Humidite salle bains haut
+sensor.pressure_158d000223a28f:
+  friendly_name: Pression salle bains haut
+      
+sensor.temperature_158d0002272daf:
+  friendly_name: Temperature chambre Sport
+sensor.humidity_158d0002272daf:
+  friendly_name: Humidite chambre Sport
+sensor.pressure_158d0002272daf:
+  friendly_name: Pression chambre Sport
+      
+sensor.temperature_158d00022733b2:
+  friendly_name: Temperature bureau
+sensor.humidity_158d00022733b2:
+  friendly_name: Humidite bureau
+sensor.pressure_158d00022733b2:
+  friendly_name: Pression bureau
+
+binary_sensor.switch_158d0001d62031:
+  friendly_name: Switch
+  
+binary_sensor.door_window_sensor_158d0001bc41d3: 
+  friendly_name: Fenetre salon
+binary_sensor.door_window_sensor_158d0001c1d94d:
+  friendly_name: Fenetre chambre
+binary_sensor.door_window_sensor_158d0001c20a79:
+  friendly_name: Fenetre salle de bains bas
+
+binary_sensor.door_window_sensor_1580001c1d0001c1d94d:
+  friendly_name: Switch
+  
+light.gateway_light_7811dcb2472f:
+  friendly_name: Xiaomi gw light
+
+## Switch_158d0001d62031
+##switch.sonoff:
+##  friendly_name: Sonoff 1
+##switch.sonoff_2:
+##  friendly_name: Sonoff 2
+##switch.sonoff_3:
+##  friendly_name: Sonoff 3
+
+# Meteo weather underground
+sensor.pws_weather:
+  friendly_name: Resume
+sensor.pws_temp_c:
+  friendly_name: Temperature

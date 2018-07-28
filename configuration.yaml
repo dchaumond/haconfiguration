@@ -1,0 +1,205 @@
+# dchaumond configuration
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret latitude
+  longitude: !secret longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 0
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Paris
+  # Customization file
+  customize: !include customize.yaml
+  
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+http:
+  # Secrets are defined in the file secrets.yaml
+  # api_password: !secret http_password
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  # base_url: example.duckdns.org:8123
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+  ignore:
+    - plex_mediaserver
+    - philips_hue
+   
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+# Weather prediction
+sensor:
+  - platform: yr
+  - platform: wunderground
+    api_key: !secret wunderground_api_key
+    pws_id: !secret wunderground_pws_id
+    lang: FR
+    monitored_conditions:
+      - location
+      - alerts
+      - weather
+      - temp_c
+      - weather_1d_metric
+      - weather_1n_metric
+      - weather_2d_metric
+      - weather_2n_metric
+      - weather_3d_metric
+      - weather_3n_metric
+      - weather_4d_metric
+      - weather_4n_metric
+
+  - platform: template
+    sensors:
+      salon:
+        value_template: '{{ states.remote.harmony.attributes.current_activity }}'
+        friendly_name: 'Harmony'
+        
+  - platform: mqtt
+    state_topic: 'home/sensor/211/temp'  
+    name: 'Temperature Salon télé'  
+    unit_of_measurement: '°C'
+        
+  - platform: mqtt      
+    state_topic: 'home/sensor/244/temp'  
+    name: 'Temperature Chambre Haut'  
+    unit_of_measurement: '°C'
+        
+climate:
+  - platform: mqtt
+    name: Thermostat confort
+    temperature_command_topic: 'home/thermostat/18/target'
+    temperature_state_topic: 'home/thermostat/18/state'
+    #availability_topic: 'home/thermostat/18/state'
+
+# Text to speech
+tts:
+  - platform: google
+
+# Cloud
+cloud:
+  alexa:
+    filter:
+      include_entities:
+        - sensor.temperature_salon_tele
+        - sensor.temperature_chambre_haut
+        - script.thermostat_confort
+      include_domains:
+        - sensor
+        - switch
+        - climate
+      exclude_entities:
+        - switch.nuc_flash_green
+    entity_config:
+      sensor.temperature_salon_tele:
+        name: Temperature Salon Télé
+        description: Sonde salon reportee par domoticz
+      climate.thermostat_confort:
+        name: Thermostat confort
+        description: Regle la temperature de confort - Alexa, set the Thermostat confort to 20.
+        
+#Xiaomi
+xiaomi_aqara:
+   discovery_retry: 10
+   gateways:
+     - key: !secret xiaomi_aqara_key
+       mac: !secret xiaomi_aqara_mac
+
+#MQTT
+mqtt:
+  broker: 192.168.1.41
+  port: 1883
+  discovery: true
+  discovery_prefix: homeassistant
+        
+switch:
+
+  - platform: command_line
+    switches:
+      tv_switch:
+        command_on: 'curl "http://192.168.1.150:8080/json.htm?type=command&param=switchlight&idx=126&switchcmd=On"'
+        command_off: 'curl "http://192.168.1.150:8080/json.htm?type=command&param=switchlight&idx=126&switchcmd=Off"'
+        friendly_name: Prise TV
+      sapin_switch:
+        command_on: 'curl "http://192.168.1.150:8080/json.htm?type=command&param=switchlight&idx=127&switchcmd=On"'
+        command_off: 'curl "http://192.168.1.150:8080/json.htm?type=command&param=switchlight&idx=127&switchcmd=Off"'
+        friendly_name: Ancienne prise sapin
+      nuc_flash_green:
+        command_on: 'curl "http://192.168.1.41:9000/hooks/led?id=ring&bright=20&blink=fade_medium&color=green"'
+        command_off: 'curl "http://192.168.1.41:9000/hooks/led?id=ring&bright=10&blink=none&color=blue"'
+        friendly_name: Nuc flash green
+
+  - platform: mqtt
+    name: "Prise salon"
+    command_topic: "cmnd/sonoff-7184/POWER"
+    state_topic: "stat/sonoff-7184/RESULT"
+    value_template: "{{value_json.POWER}}"
+    payload_off: "OFF"
+    payload_on: "ON"
+    availability_topic: "tele/sonoff-7184/LWT"
+    payload_available: "Connecté"
+    payload_not_available: "Déconnecté"
+    qos: 1
+    retain: true
+    
+  - platform: mqtt
+  # See https://www.domoticz.com/wiki/MQTT
+    name: "Prise sapin"
+    command_topic: "home/switch/127/power"
+    state_topic: "home/switch/127/state"
+    #payload_on: '{"command": "switchlight", "idx": 127, "switchcmd": "On" }'
+    payload_on: "On"
+    #payload_off: '{"command": "switchlight", "idx": 127, "switchcmd": "Off" }'
+    payload_off: "Off"
+    qos: 1
+    retain: true
+
+input_number:
+  slider1:
+    name: Slider
+    initial: 30
+    min: -20
+    max: 35
+    step: 1
+
+# Example configuration.yaml entry
+emulated_hue:
+  type: alexa
+  expose_by_default: false
+  host_ip: 192.168.1.41
+  exposed_domains:
+    - light
+    - switch
+    - input_boolean
+      
+group: !include groups.yaml
+automation: !include_dir_merge_list automations/
+script: !include scripts.yaml

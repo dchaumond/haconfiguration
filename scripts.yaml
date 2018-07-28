@@ -1,0 +1,13 @@
+slider:
+  sequence:
+    - service: input_number.set_value
+      data_template:
+        entity_id: input_number.slider1
+        value: "{{ requested_level }}"
+        
+thermostat_confort:
+  sequence:
+    - service: climate.set_temperature
+      data_template:
+        entity_id: climate.thermostat_confort
+        temperature: "{{ requested_level }}"        

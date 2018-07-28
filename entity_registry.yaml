@@ -1,0 +1,205 @@
+sensor.temperature_158d0002239fad:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: temperature158d0002239fad
+sensor.pressure_158d0002239fad:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: pressure158d0002239fad
+sensor.pressure_158d0002239fc5:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: pressure158d0002239fc5
+sensor.illumination_7811dcb2472f:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: illumination7811dcb2472f
+sensor.humidity_158d0002239fad:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: humidity158d0002239fad
+sensor.temperature_158d0001f238fe:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: temperature158d0001f238fe
+sensor.humidity_158d0001f238fe:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: humidity158d0001f238fe
+sensor.temperature_158d0002239fc5:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: temperature158d0002239fc5
+sensor.pressure_158d0001f238fe:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: pressure158d0001f238fe
+sensor.humidity_158d0002239fc5:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: humidity158d0002239fc5
+light.gateway_light_7811dcb2472f:
+  config_entry_id:
+  name: gateway_light
+  platform: xiaomi_aqara
+  unique_id: rgb7811dcb2472f
+media_player.mibox3:
+  config_entry_id:
+  name:
+  platform: cast
+  unique_id: 625441cb-00fd-775f-a2a6-e4d64ed17b24
+sensor.illumination_158d0001e542b5:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: lux158d0001e542b5
+binary_sensor.motion_sensor_158d0001e542b5:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d0001e542b5
+binary_sensor.switch_158d0001d62031:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d0001d62031
+sensor.temperature_158d000223a28f:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: temperature158d000223a28f
+sensor.humidity_158d0002272daf:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: humidity158d0002272daf
+sensor.humidity_158d000223a28f:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: humidity158d000223a28f
+sensor.humidity_158d00022733b2:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: humidity158d00022733b2
+sensor.illumination_158d000222e329:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: lux158d000222e329
+sensor.pressure_158d00022733b2:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: pressure158d00022733b2
+sensor.pressure_158d0002272daf:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: pressure158d0002272daf
+sensor.temperature_158d00022733b2:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: temperature158d00022733b2
+sensor.pressure_158d000223a28f:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: pressure158d000223a28f
+sensor.temperature_158d0002272daf:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: temperature158d0002272daf
+binary_sensor.motion_sensor_158d000222e329:
+  config_entry_id:
+  name:
+  platform: xiaomi_aqara
+  unique_id: status158d000222e329
+binary_sensor.door_window_sensor_158d0001c1d94d:
+  config_entry_id:
+  name: ''
+  platform: xiaomi_aqara
+  unique_id: status158d0001c1d94d
+binary_sensor.door_window_sensor_158d0001bc41d3:
+  config_entry_id:
+  name: ''
+  platform: xiaomi_aqara
+  unique_id: status158d0001bc41d3
+binary_sensor.door_window_sensor_158d0001c20a79:
+  config_entry_id:
+  name: ''
+  platform: xiaomi_aqara
+  unique_id: status158d0001c20a79
+sensor.pws_location:
+  config_entry_id:
+  name:
+  platform: wunderground
+  unique_id: IBALMA9,location
+sensor.pws_weather:
+  config_entry_id:
+  name:
+  platform: wunderground
+  unique_id: IBALMA9,weather
+sensor.pws_weather_4n_metric:
+  config_entry_id:
+  name:
+  platform: wunderground
+  unique_id: IBALMA9,weather_4n_metric
+sensor.pws_alerts:
+  config_entry_id:
+  name:
+  platform: wunderground
+  unique_id: IBALMA9,alerts
+sensor.pws_temp_c:
+  config_entry_id:
+  name:
+  platform: wunderground
+  unique_id: IBALMA9,temp_c
+sensor.pws_weather_1n_metric:
+  config_entry_id:
+  name:
+  platform: wunderground
+  unique_id: IBALMA9,weather_1n_metric
+sensor.pws_weather_2d_metric:
+  config_entry_id:
+  name:
+  platform: wunderground
+  unique_id: IBALMA9,weather_2d_metric
+sensor.pws_weather_3d_metric:
+  config_entry_id:
+  name:
+  platform: wunderground
+  unique_id: IBALMA9,weather_3d_metric
+sensor.pws_weather_2n_metric:
+  config_entry_id:
+  name:
+  platform: wunderground
+  unique_id: IBALMA9,weather_2n_metric
+sensor.pws_weather_4d_metric:
+  config_entry_id:
+  name:
+  platform: wunderground
+  unique_id: IBALMA9,weather_4d_metric
+sensor.pws_weather_3n_metric:
+  config_entry_id:
+  name:
+  platform: wunderground
+  unique_id: IBALMA9,weather_3n_metric
+sensor.pws_weather_1d_metric:
+  config_entry_id:
+  name:
+  platform: wunderground
+  unique_id: IBALMA9,weather_1d_metric
