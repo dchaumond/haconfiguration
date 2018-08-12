@@ -118,7 +118,6 @@ climate:
     temperature_command_topic: 'home/thermostat/19/target'
     current_temperature_topic: 'home/thermostat/19/state'
     temperature_state_topic: 'home/thermostat/19/state'
-    #availability_topic: 'home/thermostat/18/state'
     unit_of_measurement: '°C'
     retain: true
 
@@ -127,7 +126,6 @@ climate:
     temperature_command_topic: 'home/thermostat/44/target'
     current_temperature_topic: 'home/thermostat/44/state'
     temperature_state_topic: 'home/thermostat/44/state'
-    #availability_topic: 'home/thermostat/18/state'
     unit_of_measurement: '°C'
     retain: true
 
@@ -145,9 +143,9 @@ cloud:
         - sensor.temperature_chambre_haut
         - sensor.temperature_terrasse
         - climate.thermostat_confort
-        - light.yeelight_color2_7c49ebae8646
-        - light.terrasse_1
-        - light.terrasse_2
+        #- light.yeelight_color2_7c49ebae8646
+        #- light.terrasse_1
+        #- light.terrasse_2
         - switch.sonoff6674
         - switch.sonoff7184
         - switch.sonoff7339
@@ -169,15 +167,6 @@ cloud:
       climate.thermostat_confort:
         name: Thermostat Confort
         description: Regle la temperature confort - Alexa, set the Thermostat confort to 20.
-      light.yeelight_color2_7c49ebae8646:
-        name: Lumiere Home Assistant
-        description: Yeelight exposee par Home Assistant
-      light.terrasse_1:
-        name: Lumiere Terrasse Barbecue
-        description: bbcue
-      light.terrasse_2:
-        name: Lumiere Terrasse Table
-        description: Table
         
 #Xiaomi
 xiaomi_aqara:
@@ -296,25 +285,7 @@ fan:
           - 'Min'
           - 'Med'
           - 'Max'
-
-input_number:
-  slider1:
-    name: Slider
-    initial: 30
-    min: -20
-    max: 35
-    step: 1
-
-# Example configuration.yaml entry
-emulated_hue:
-  type: alexa
-  expose_by_default: false
-  host_ip: 192.168.1.41
-  exposed_domains:
-    - light
-    - switch
-    - input_boolean
-      
+     
 group: !include groups.yaml
 automation: !include_dir_merge_list automations/
 script: !include scripts.yaml
