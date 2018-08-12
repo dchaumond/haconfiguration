@@ -47,6 +47,11 @@ conversation:
 # Enables support for tracking state changes over time
 history:
 
+#logger: 
+#  default: critical
+#  logs:
+#    homeassistant.components.alexa: debug
+
 # View all events in a logbook
 logbook:
 
@@ -93,12 +98,38 @@ sensor:
     name: 'Temperature Chambre Haut'  
     unit_of_measurement: '°C'
         
+  - platform: mqtt
+    state_topic: 'home/sensor/247/temp'  
+    name: 'Temperature Terrasse'  
+    unit_of_measurement: '°C'
+        
 climate:
   - platform: mqtt
     name: Thermostat confort
     temperature_command_topic: 'home/thermostat/18/target'
+    current_temperature_topic: 'home/thermostat/18/state'
     temperature_state_topic: 'home/thermostat/18/state'
     #availability_topic: 'home/thermostat/18/state'
+    unit_of_measurement: '°C'
+    retain: true
+
+  - platform: mqtt
+    name: Thermostat eco
+    temperature_command_topic: 'home/thermostat/19/target'
+    current_temperature_topic: 'home/thermostat/19/state'
+    temperature_state_topic: 'home/thermostat/19/state'
+    #availability_topic: 'home/thermostat/18/state'
+    unit_of_measurement: '°C'
+    retain: true
+
+  - platform: mqtt
+    name: Thermostat bain
+    temperature_command_topic: 'home/thermostat/44/target'
+    current_temperature_topic: 'home/thermostat/44/state'
+    temperature_state_topic: 'home/thermostat/44/state'
+    #availability_topic: 'home/thermostat/18/state'
+    unit_of_measurement: '°C'
+    retain: true
 
 # Text to speech
 tts:
@@ -109,22 +140,44 @@ cloud:
   alexa:
     filter:
       include_entities:
+        - switch.prise_salon
         - sensor.temperature_salon_tele
         - sensor.temperature_chambre_haut
-        - script.thermostat_confort
+        - sensor.temperature_terrasse
+        - climate.thermostat_confort
+        - light.yeelight_color2_7c49ebae8646
+        - light.terrasse_1
+        - light.terrasse_2
+        - switch.sonoff6674
+        - switch.sonoff7184
+        - switch.sonoff7339
+        #- climate.thermostat_eco
+        #- climate.thermostat_bain
       include_domains:
         - sensor
-        - switch
-        - climate
+      #  - switch
+      #  - climate
       exclude_entities:
         - switch.nuc_flash_green
     entity_config:
       sensor.temperature_salon_tele:
         name: Temperature Salon Télé
         description: Sonde salon reportee par domoticz
+      sensor.temperature_terrasse:
+        name: Temperature Terrasse
+        description: Sonde terrasse RF
       climate.thermostat_confort:
-        name: Thermostat confort
-        description: Regle la temperature de confort - Alexa, set the Thermostat confort to 20.
+        name: Thermostat Confort
+        description: Regle la temperature confort - Alexa, set the Thermostat confort to 20.
+      light.yeelight_color2_7c49ebae8646:
+        name: Lumiere Home Assistant
+        description: Yeelight exposee par Home Assistant
+      light.terrasse_1:
+        name: Lumiere Terrasse Barbecue
+        description: bbcue
+      light.terrasse_2:
+        name: Lumiere Terrasse Table
+        description: Table
         
 #Xiaomi
 xiaomi_aqara:
@@ -181,6 +234,68 @@ switch:
     payload_off: "Off"
     qos: 1
     retain: true
+
+  - platform: template
+    switches:
+      fanpower:
+        value_template: "{% if is_state('remote.salon', 'on') %}on{% else %}off{% endif %}"
+        turn_on:
+          service: remote.send_command
+          entity_id: remote.salon
+          data_template:
+            command: PowerToggle
+            device: 56199388          
+        turn_off:
+          service: remote.send_command
+          entity_id: remote.salon
+          data_template:
+            command: PowerToggle
+            device: 56199388
+
+light: !include_dir_merge_list lights/
+   
+# Fan
+# Keep track of the on/off state
+input_boolean:
+  rowenta_fan_state:
+
+# Keep track of the current speed
+input_select:
+  rowenta_fan_speed:
+    options:
+      - 'Min'
+      - 'Med'
+      - 'Max'
+
+fan:
+  - platform: template
+    fans:
+      rowenta_fan:
+        friendly_name: "Rowenta"
+        value_template: "{{ states('input_boolean.rowenta_fan_state') }}"
+        speed_template: "{{ states('input_select.rowenta_fan_speed') }}"
+        turn_on:
+          service: remote.send_command
+          entity_id: remote.salon
+          data_template:
+            command: PowerToggle
+            device: 56199388          
+        turn_off:
+          service: remote.send_command
+          entity_id: remote.salon
+          data_template:
+            command: PowerToggle
+            device: 56199388
+        set_speed:
+          service: remote.send_command
+          entity_id: remote.salon
+          data_template:
+            command: '+/-'
+            device: 56199388
+        speeds:
+          - 'Min'
+          - 'Med'
+          - 'Max'
 
 input_number:
   slider1:
