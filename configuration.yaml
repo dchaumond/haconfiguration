@@ -13,6 +13,10 @@ homeassistant:
   time_zone: Europe/Paris
   # Customization file
   customize: !include customize.yaml
+  # Packages
+  packages: 
+    domoticz: !include domoticz.yaml
+    harmony: !include harmony.yaml
   
 # Enables the frontend
 frontend:
@@ -47,8 +51,8 @@ conversation:
 # Enables support for tracking state changes over time
 history:
 
-#logger: 
-#  default: critical
+logger: 
+  default: critical
 #  logs:
 #    homeassistant.components.alexa: debug
 
@@ -88,21 +92,6 @@ sensor:
         value_template: '{{ states.remote.harmony.attributes.current_activity }}'
         friendly_name: 'Harmony'
         
-  - platform: mqtt
-    state_topic: 'home/sensor/211/temp'  
-    name: 'Temperature Salon télé'  
-    unit_of_measurement: '°C'
-        
-  - platform: mqtt      
-    state_topic: 'home/sensor/244/temp'  
-    name: 'Temperature Chambre Haut'  
-    unit_of_measurement: '°C'
-        
-  - platform: mqtt
-    state_topic: 'home/sensor/247/temp'  
-    name: 'Temperature Terrasse'  
-    unit_of_measurement: '°C'
-        
 climate:
   - platform: mqtt
     name: Thermostat confort
@@ -138,7 +127,6 @@ cloud:
   alexa:
     filter:
       include_entities:
-        - switch.prise_salon
         - sensor.temperature_salon_tele
         - sensor.temperature_chambre_haut
         - sensor.temperature_terrasse
@@ -190,17 +178,13 @@ switch:
         command_on: 'curl "http://192.168.1.150:8080/json.htm?type=command&param=switchlight&idx=126&switchcmd=On"'
         command_off: 'curl "http://192.168.1.150:8080/json.htm?type=command&param=switchlight&idx=126&switchcmd=Off"'
         friendly_name: Prise TV
-      sapin_switch:
-        command_on: 'curl "http://192.168.1.150:8080/json.htm?type=command&param=switchlight&idx=127&switchcmd=On"'
-        command_off: 'curl "http://192.168.1.150:8080/json.htm?type=command&param=switchlight&idx=127&switchcmd=Off"'
-        friendly_name: Ancienne prise sapin
       nuc_flash_green:
         command_on: 'curl "http://192.168.1.41:9000/hooks/led?id=ring&bright=20&blink=fade_medium&color=green"'
         command_off: 'curl "http://192.168.1.41:9000/hooks/led?id=ring&bright=10&blink=none&color=blue"'
         friendly_name: Nuc flash green
 
   - platform: mqtt
-    name: "Prise salon"
+    name: "Prise sonoff"
     command_topic: "cmnd/sonoff-7184/POWER"
     state_topic: "stat/sonoff-7184/RESULT"
     value_template: "{{value_json.POWER}}"
@@ -211,81 +195,66 @@ switch:
     payload_not_available: "Déconnecté"
     qos: 1
     retain: true
-    
-  - platform: mqtt
-  # See https://www.domoticz.com/wiki/MQTT
-    name: "Prise sapin"
-    command_topic: "home/switch/127/power"
-    state_topic: "home/switch/127/state"
-    #payload_on: '{"command": "switchlight", "idx": 127, "switchcmd": "On" }'
-    payload_on: "On"
-    #payload_off: '{"command": "switchlight", "idx": 127, "switchcmd": "Off" }'
-    payload_off: "Off"
-    qos: 1
-    retain: true
-
-  - platform: template
-    switches:
-      fanpower:
-        value_template: "{% if is_state('remote.salon', 'on') %}on{% else %}off{% endif %}"
-        turn_on:
-          service: remote.send_command
-          entity_id: remote.salon
-          data_template:
-            command: PowerToggle
-            device: 56199388          
-        turn_off:
-          service: remote.send_command
-          entity_id: remote.salon
-          data_template:
-            command: PowerToggle
-            device: 56199388
 
 light: !include_dir_merge_list lights/
+             
+emulated_hue:
+  #host_ip: 192.168.1.41
+  #listen_port: 8300
+  expose_by_default: false
+  exposed_domains:
+    - switch
+    - light    
+  entities:
+     switch.tv:
+      name: "Télé"
+      hidden: false
+     switch.ventilo:
+      name: "Ventilateur"
+      hidden: false
+     switch.fan_silent:
+      name: "Ventilateur Silencieux"
+      hidden: false
+     switch.ilife:
+      name: "Aspirateur"
+      hidden: false
+     switch.une:
+      name: "une"
+      hidden: false
+     switch.deux:
+      name: "deux"
+      hidden: false
+     switch.trois:
+      name: "trois"
+      hidden: false
+     switch.cinq:
+      name: "cinq"
+      hidden: false
+     switch.six:
+      name: "six"
+      hidden: false
+     switch.quinze:
+      name: "quinze"
+      hidden: false
+     switch.trois_region:
+      name: "trois region"
+      hidden: false
+     switch.prise_meuble_salon:
+      name: "Prise meuble salon"
+      hidden: false
+     switch.prise_sonoff:
+      name: "Prise sonoff"
+      hidden: false
+     light.yeelight_color2_7c49ebae8646:
+      name: "Lumiere canape"
+      hidden: false
+     light.yeelight_color2_7c49ebb312ce:
+      name: "Lumiere barbecue"
+      hidden: false
+     light.yeelight_color2_7c49ebb318f9:
+      name: "Lumiere table terrasse"
+      hidden: false
    
-# Fan
-# Keep track of the on/off state
-input_boolean:
-  rowenta_fan_state:
-
-# Keep track of the current speed
-input_select:
-  rowenta_fan_speed:
-    options:
-      - 'Min'
-      - 'Med'
-      - 'Max'
-
-fan:
-  - platform: template
-    fans:
-      rowenta_fan:
-        friendly_name: "Rowenta"
-        value_template: "{{ states('input_boolean.rowenta_fan_state') }}"
-        speed_template: "{{ states('input_select.rowenta_fan_speed') }}"
-        turn_on:
-          service: remote.send_command
-          entity_id: remote.salon
-          data_template:
-            command: PowerToggle
-            device: 56199388          
-        turn_off:
-          service: remote.send_command
-          entity_id: remote.salon
-          data_template:
-            command: PowerToggle
-            device: 56199388
-        set_speed:
-          service: remote.send_command
-          entity_id: remote.salon
-          data_template:
-            command: '+/-'
-            device: 56199388
-        speeds:
-          - 'Min'
-          - 'Med'
-          - 'Max'
-     
 group: !include groups.yaml
 automation: !include_dir_merge_list automations/
 script: !include scripts.yaml

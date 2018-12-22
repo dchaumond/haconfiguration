@@ -7,7 +7,6 @@ desk:
     - light.yeelight_color2_7c49ebae8646
     - light.gateway_light_7811dcb2472f   
     - switch.tv_switch
-    - switch.sapin_switch
     - sensor.temperature_salon_tele
     
 temperature:
@@ -54,8 +53,6 @@ lights:
   entities:
     - light.gateway_light_7811dcb2472f
     - light.yeelight_color2_7c49ebae8646
-    - light.terrasse_1
-    - light.terrasse_2
 
 daily_forecast:
     name: Meteo a venir

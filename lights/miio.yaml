@@ -1,11 +1,11 @@
-- platform: xiaomi_miio
-  name: Terrasse 1
-  host: 192.168.1.221
-  token: 0a022707bfd080d83f3ad55845426131
-  model: philips.light.bulb  
-
-- platform: xiaomi_miio
-  name: Terrasse 2
-  host: 192.168.1.222
-  token: 18b83b06118bc98fb6d7265fcb8f765d
-  model: philips.light.bulb  
+#- platform: xiaomi_miio
+#  name: Terrasse 1
+#  host: 192.168.1.221
+#  token: 0a022707bfd080d83f3ad55845426131
+#  model: philips.light.bulb  
+#
+#- platform: xiaomi_miio
+#  name: Terrasse 2
+#  host: 192.168.1.222
+#  token: 18b83b06118bc98fb6d7265fcb8f765d
+#  model: philips.light.bulb  
