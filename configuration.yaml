@@ -165,8 +165,8 @@ xiaomi_aqara:
 
 #MQTT
 mqtt:
-  broker: 192.168.1.41
-  port: 1883
+  broker: !secret mqtt_broker_host
+  port: !secret mqtt_broker_port
   discovery: true
   discovery_prefix: homeassistant
         
@@ -182,6 +182,10 @@ switch:
         command_on: 'curl "http://192.168.1.41:9000/hooks/led?id=ring&bright=20&blink=fade_medium&color=green"'
         command_off: 'curl "http://192.168.1.41:9000/hooks/led?id=ring&bright=10&blink=none&color=blue"'
         friendly_name: Nuc flash green
+      buanderie_switch:
+        command_on: 'curl "http://192.168.1.150:8080/json.htm?type=command&param=switchlight&idx=262&switchcmd=On"'
+        command_off: 'curl "http://192.168.1.150:8080/json.htm?type=command&param=switchlight&idx=262&switchcmd=Off"'
+        friendly_name: Buanderie
 
   - platform: mqtt
     name: "Prise sonoff"
