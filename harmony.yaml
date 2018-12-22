@@ -1,0 +1,249 @@
+input_boolean:
+  ventilo_state:
+    name: Ventilo state
+    initial: off
+  fan_silent_state:
+    name: Ventilo silent state
+    initial: off
+  ilife_state:
+    name: Ilife state
+    initial: off
+    
+switch:
+  - platform: template
+    switches:
+      # TV HARMONY ACTIVITY
+      tv:
+        value_template: "{{ is_state_attr('remote.salon', 'current_activity', 'TV') }}"
+        turn_on:
+          service: remote.turn_on
+          data:
+            entity_id: remote.salon
+            activity: 'TV'
+        turn_off:
+          service: remote.turn_on
+          data:
+            entity_id: remote.salon
+            activity: 'PowerOff'
+      ventilo:
+        value_template: "{{ is_state('input_boolean.ventilo_state', 'on')}}"
+        turn_on:
+          service: script.turn_on
+          entity_id: script.ventilo_on
+        turn_off:
+          service: script.turn_on
+          entity_id: script.ventilo_off
+      # Fan silent
+      fan_silent:
+        value_template: "{{ is_state('input_boolean.fan_silent_state', 'on')}}"
+        turn_on:
+          service: script.turn_on
+          entity_id: script.fan_silent_on
+        turn_off:
+          service: script.turn_off
+          entity_id: script.fan_silent_off
+      ilife:
+        value_template: "{{ is_state('input_boolean.ilife_state', 'on')}}"
+        turn_on:
+          service: script.turn_on
+          entity_id: script.ilife_on
+        turn_off:
+          service: script.turn_on
+          entity_id: script.ilife_off
+      # Set TV channel
+      une:
+        value_template: "{{ is_state('script.channel_une', 'on')}}"
+        turn_on:
+          service: script.turn_on
+          entity_id: script.channel_une
+        turn_off:
+          service: script.turn_on
+          entity_id: script.channel_off
+      deux:
+        value_template: "{{ is_state('script.channel_deux', 'on')}}"
+        turn_on:
+          service: script.turn_on
+          entity_id: script.channel_deux
+        turn_off:
+          service: script.turn_on
+          entity_id: script.channel_off
+      trois:
+        value_template: "{{ is_state('script.channel_trois', 'on')}}"
+        turn_on:
+          service: script.turn_on
+          entity_id: script.channel_trois
+        turn_off:
+          service: script.turn_on
+          entity_id: script.channel_off
+      cinq:
+        value_template: "{{ is_state('script.channel_cinq', 'on')}}"
+        turn_on:
+          service: script.turn_on
+          entity_id: script.channel_cinq
+        turn_off:
+          service: script.turn_on
+          entity_id: script.channel_off
+      six:
+        value_template: "{{ is_state('script.channel_six', 'on')}}"
+        turn_on:
+          service: script.turn_on
+          entity_id: script.channel_six
+        turn_off:
+          service: script.turn_on
+          entity_id: script.channel_off
+      quinze:
+        value_template: "{{ is_state('script.channel_quinze', 'on')}}"
+        turn_on:
+          service: script.turn_on
+          entity_id: script.channel_quinze
+        turn_off:
+          service: script.turn_on
+          entity_id: script.channel_off
+      trois_region:
+        value_template: "{{ is_state('script.channel_trois_region', 'on')}}"
+        turn_on:
+          service: script.turn_on
+          entity_id: script.channel_trois_region
+        turn_off:
+          service: script.turn_on
+          entity_id: script.channel_off
+     
+script:
+  ventilo_on:
+    sequence:
+      - service: remote.send_command
+        entity_id: remote.salon
+        data:
+          device: 56199388
+          command: PowerToggle
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.ventilo_state
+
+  ventilo_off:
+    sequence:
+      - service: remote.send_command
+        entity_id: remote.salon
+        data:
+          device: 56199388
+          command: PowerToggle
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.ventilo_state
+        
+  fan_silent_on:
+    sequence:
+      - service: remote.send_command
+        entity_id: remote.salon
+        data:
+          device: 56199388
+          command: SilentNight
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.fan_silent_state
+
+  fan_silent_off:
+    sequence:
+      - service: remote.send_command
+        entity_id: remote.salon
+        data:
+          device: 56199388
+          command: SilentNight
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.fan_silent_state
+        
+  ilife_on:
+    sequence:
+      - service: remote.send_command
+        entity_id: remote.salon
+        data:
+          device: 46634166
+          command: Clean
+      - service: input_boolean.turn_on
+        entity_id: input_boolean.ilife_state
+
+  ilife_off:
+    sequence:
+      - service: remote.send_command
+        entity_id: remote.salon
+        data:
+          device: 46634166
+          command: home
+      - service: input_boolean.turn_off
+        entity_id: input_boolean.ilife_state
+
+  channel_off:
+    sequence:
+      - service: remote.send_command
+        entity_id: remote.salon
+        data:
+          device: 46634160
+          command: 0
+          
+  channel_une:
+    sequence:
+      - service: remote.send_command
+        entity_id: remote.salon
+        data:
+          device: 46634160
+          command: 1
+
+  channel_deux:
+    sequence:
+      - service: remote.send_command
+        entity_id: remote.salon
+        data:
+          device: 46634160
+          command: 2
+
+  channel_trois:
+    sequence:
+      - service: remote.send_command
+        entity_id: remote.salon
+        data:
+          device: 46634160
+          command: 3
+
+  channel_cinq:
+    sequence:
+      - service: remote.send_command
+        entity_id: remote.salon
+        data:
+          device: 46634160
+          command: 5
+
+  channel_six:
+    sequence:
+      - service: remote.send_command
+        entity_id: remote.salon
+        data:
+          device: 46634160
+          command: 6
+
+  channel_quinze:
+    sequence:
+      - service: remote.send_command
+        entity_id: remote.salon
+        data:
+          device: 46634160
+          command:
+            - 1
+            - 5
+
+  channel_trois_region:
+    sequence:
+      - service: remote.send_command
+        entity_id: remote.salon
+        data:
+          device: 46634160
+          command:
+            - 3
+            - 1
+            - 7
+            
+  channel_on:
+    sequence:
+      - service: remote.send_command
+        entity_id: remote.salon
+        data_template:
+          device: "{{ device }}"
+          command: "{{ command }}"
+        
+         

@@ -1,0 +1,30 @@
+sensor:
+  - platform: mqtt
+    state_topic: 'home/sensor/260/temp'
+    name: 'dz Sonde Chambre Haut'
+    unit_of_measurement: ' C'
+
+  - platform: mqtt
+    state_topic: 'home/sensor/257/temp'
+    name: 'dz Sonde Terrasse'
+    unit_of_measurement: ' C'
+ 
+  - platform: mqtt
+    state_topic: 'home/sensor/248/temp'
+    name: 'dz Sonde Salon'
+    unit_of_measurement: ' C'
+
+  - platform: mqtt
+    state_topic: 'home/sensor/255/temp'
+    name: 'dz Sonde Chambre sport'
+    unit_of_measurement: ' C'
+    
+switch:
+  - platform: mqtt
+    name: "Prise meuble salon"
+    command_topic: "home/switch/126/power"
+    state_topic: "home/switch/126/state"
+    payload_on: "On"
+    payload_off: "Off"
+    qos: 1
+    retain: true
