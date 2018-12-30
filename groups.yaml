@@ -7,14 +7,17 @@ desk:
     - light.yeelight_color2_7c49ebae8646
     - light.gateway_light_7811dcb2472f   
     - switch.tv_switch
-    - sensor.temperature_salon_tele
+    - switch.prise_sonoff
+    - sensor.dz_sonde_salon
     
 temperature:
   name: Temperature
   entities:
+    - sensor.dz_sonde_terrasse
     - sensor.temperature_158d0002239fad
     - sensor.humidity_158d0002239fad
     - sensor.pressure_158d0002239fad
+    - sensor.dz_sonde_chambre_haut
     - sensor.temperature_158d0001f238fe
     - sensor.humidity_158d0001f238fe   
     - sensor.pressure_158d0001f238fe
@@ -49,10 +52,28 @@ switchs:
     - switch.sonoff7339
  
 lights:
-  name: Eclairages à Led
+  name: Lumieres
   entities:
     - light.gateway_light_7811dcb2472f
     - light.yeelight_color2_7c49ebae8646
+    - light.yeelight_color2_7c49ebb312ce
+    - light.yeelight_color2_7c49ebb318f9
+    - light.yeelight_color2_04cf8c7bf62e
+    - light.yeelight_color2_04cf8c7bfa5f
+    - light.yeelight_color2_04cf8c7cb967
+    
+meuble:
+  name: Lumieres meuble
+  entities:
+    - light.yeelight_color2_04cf8c7bf62e
+    - light.yeelight_color2_04cf8c7bfa5f
+    - light.yeelight_color2_04cf8c7cb967
+    
+terrasse:    
+  name: Lumieres terrasse
+  entities:
+    - light.yeelight_color2_7c49ebb312ce
+    - light.yeelight_color2_7c49ebb318f9
 
 daily_forecast:
     name: Meteo a venir

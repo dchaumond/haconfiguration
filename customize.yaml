@@ -60,3 +60,5 @@ light.yeelight_color2_7c49ebb312ce:
   friendly_name: Lumiere barbecue
 light.yeelight_color2_7c49ebb318f9:
   friendly_name: Lumiere table terrasse
+switch.domoticz_126:
+  friendly_name: Meuble salon (mqtt)

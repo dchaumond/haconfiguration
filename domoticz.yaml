@@ -2,22 +2,22 @@ sensor:
   - platform: mqtt
     state_topic: 'home/sensor/260/temp'
     name: 'dz Sonde Chambre Haut'
-    unit_of_measurement: ' C'
+    unit_of_measurement: '°C'
 
   - platform: mqtt
     state_topic: 'home/sensor/257/temp'
     name: 'dz Sonde Terrasse'
-    unit_of_measurement: ' C'
+    unit_of_measurement: '°C'
  
   - platform: mqtt
     state_topic: 'home/sensor/248/temp'
     name: 'dz Sonde Salon'
-    unit_of_measurement: ' C'
+    unit_of_measurement: '°C'
 
   - platform: mqtt
     state_topic: 'home/sensor/255/temp'
     name: 'dz Sonde Chambre sport'
-    unit_of_measurement: ' C'
+    unit_of_measurement: '°C'
     
 switch:
   - platform: mqtt

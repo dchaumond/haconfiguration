@@ -1,3 +1,14 @@
+# Ask for sonoffs states at start
+- alias: "Power state on HA start-up"
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "/sonoffs/cmnd/state"
+        payload: "" 
+        
 - alias: Turn on light when motion is detected
   trigger:
     - platform: state
@@ -25,33 +36,43 @@
     #  entity_id: switch.nuc_flash_green
 
 # Test ...
-- alias: Turn green simple click
+- alias: Turn green long click
   trigger:
     - platform: event
       event_type: xiaomi_aqara.click
       event_data:
-        #event_id: binary_sensor.wall_switch_left_158XXXXXXXXX
         event_id: binary_sensor.switch_158d0001d62031
-        click_type: single
+        click_type: long_click_press
   action:
     - service: light.turn_on
       data:
         entity_id: light.gateway_light_7811dcb2472f
         brightness: 170
         color_name: green
+
+# Turn on/off meuble
+- alias: Turn on/off meuble
+  trigger:
+    - platform: event
+      event_type: xiaomi_aqara.click
+      event_data:
+        event_id: binary_sensor.switch_158d0001d62031
+        click_type: single
+  action:
+    - service: homeassistant.toggle
+      entity_id: group.meuble
         
+# Toggle gw double click
 - alias: Turn off
   trigger:
     - platform: event
       event_type: xiaomi_aqara.click
       event_data:
-        #event_id: binary_sensor.wall_switch_left_158XXXXXXXXX
         event_id: binary_sensor.switch_158d0001d62031
         click_type: double
   action:
-    - service: light.turn_off
-      data:
-        entity_id: light.gateway_light_7811dcb2472f
+    - service: homeassistant.toggle
+      entity_id: light.gateway_light_7811dcb2472f
         
 - alias: Turn on buanderie
   trigger:
@@ -59,6 +80,9 @@
       entity_id: binary_sensor.motion_sensor_158d000222e329
       to: 'on'
   action:
+    - condition: state
+      entity_id: 'switch.buanderie_switch'
+      state: 'off'
     - service: switch.turn_on
       data:
         entity_id: switch.buanderie_switch
@@ -69,6 +93,9 @@
       entity_id: binary_sensor.motion_sensor_158d000222e329
       to: 'off'
   action:
+    - condition: state
+      entity_id: 'switch.buanderie_switch'
+      state: 'on'
     - service: switch.turn_off
       data:
         entity_id: switch.buanderie_switch

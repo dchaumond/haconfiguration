@@ -203,8 +203,8 @@ switch:
 light: !include_dir_merge_list lights/
              
 emulated_hue:
-  #host_ip: 192.168.1.41
-  #listen_port: 8300
+  ##host_ip: 192.168.1.41
+  ##listen_port: 8300
   expose_by_default: false
   exposed_domains:
     - switch
@@ -257,6 +257,9 @@ emulated_hue:
       hidden: false
      light.yeelight_color2_7c49ebb318f9:
       name: "Lumiere table terrasse"
+      hidden: false
+     group.meuble:
+      name: meuble
       hidden: false
    
 group: !include groups.yaml
