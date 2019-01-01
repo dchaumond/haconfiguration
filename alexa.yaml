@@ -1,0 +1,32 @@
+# Alexa, "smart home" version
+alexa:
+  smart_home:
+    filter:
+      include_entities:
+        - sensor.dz_sonde_salon
+        - sensor.dz_sonde_terrasse
+        - binary_sensor.motion_sensor_158d0001e542b5
+        - binary_sensor.door_window_sensor_158d0001bc41d3
+        #- light.yeelight_color2_7c49ebae8646
+        - switch.sonoff6674
+        - switch.sonoff7184
+        - switch.sonoff7339
+        - climate.thermostat_confort
+        #- climate.thermostat_eco
+        #- climate.thermostat_bain
+      #include_domains:
+      #  - sensor
+      #  - switch
+      #  - climate
+      exclude_entities:
+        - switch.nuc_flash_green
+    entity_config:
+      sensor.dz_sonde_salon:
+        name: Temperature Salon Télé
+        description: Home Assistant - dz Sonde salon
+      sensor.dz_sonde_terrasse:
+        name: Temperature Terrasse
+        description: Home Assistant - dz Sonde terrasse
+      climate.thermostat_confort:
+        name: Thermostat confort
+        description: Home Assistant - thermostat confort

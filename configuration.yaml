@@ -17,6 +17,9 @@ homeassistant:
   packages: 
     domoticz: !include domoticz.yaml
     harmony: !include harmony.yaml
+    thermostat: !include thermostat.yaml
+    alexa: !include alexa.yaml
+    emulated_hue: !include emulated_hue.yaml
   
 # Enables the frontend
 frontend:
@@ -26,7 +29,7 @@ config:
 
 http:
   # Secrets are defined in the file secrets.yaml
-  # api_password: !secret http_password
+  api_password: !secret http_password
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   # base_url: example.duckdns.org:8123
 
@@ -53,8 +56,8 @@ history:
 
 logger: 
   default: critical
-#  logs:
-#    homeassistant.components.alexa: debug
+  #logs:
+  #  homeassistant.components.alexa.smart_home: debug
 
 # View all events in a logbook
 logbook:
@@ -91,70 +94,10 @@ sensor:
       salon:
         value_template: '{{ states.remote.harmony.attributes.current_activity }}'
         friendly_name: 'Harmony'
-        
-climate:
-  - platform: mqtt
-    name: Thermostat confort
-    temperature_command_topic: 'home/thermostat/18/target'
-    current_temperature_topic: 'home/thermostat/18/state'
-    temperature_state_topic: 'home/thermostat/18/state'
-    #availability_topic: 'home/thermostat/18/state'
-    unit_of_measurement: '°C'
-    retain: true
-
-  - platform: mqtt
-    name: Thermostat eco
-    temperature_command_topic: 'home/thermostat/19/target'
-    current_temperature_topic: 'home/thermostat/19/state'
-    temperature_state_topic: 'home/thermostat/19/state'
-    unit_of_measurement: '°C'
-    retain: true
-
-  - platform: mqtt
-    name: Thermostat bain
-    temperature_command_topic: 'home/thermostat/44/target'
-    current_temperature_topic: 'home/thermostat/44/state'
-    temperature_state_topic: 'home/thermostat/44/state'
-    unit_of_measurement: '°C'
-    retain: true
 
 # Text to speech
 tts:
   - platform: google
-
-# Cloud
-cloud:
-  alexa:
-    filter:
-      include_entities:
-        - sensor.temperature_salon_tele
-        - sensor.temperature_chambre_haut
-        - sensor.temperature_terrasse
-        - climate.thermostat_confort
-        #- light.yeelight_color2_7c49ebae8646
-        #- light.terrasse_1
-        #- light.terrasse_2
-        - switch.sonoff6674
-        - switch.sonoff7184
-        - switch.sonoff7339
-        #- climate.thermostat_eco
-        #- climate.thermostat_bain
-      include_domains:
-        - sensor
-      #  - switch
-      #  - climate
-      exclude_entities:
-        - switch.nuc_flash_green
-    entity_config:
-      sensor.temperature_salon_tele:
-        name: Temperature Salon Télé
-        description: Sonde salon reportee par domoticz
-      sensor.temperature_terrasse:
-        name: Temperature Terrasse
-        description: Sonde terrasse RF
-      climate.thermostat_confort:
-        name: Thermostat Confort
-        description: Regle la temperature confort - Alexa, set the Thermostat confort to 20.
         
 #Xiaomi
 xiaomi_aqara:
@@ -170,97 +113,9 @@ mqtt:
   discovery: true
   discovery_prefix: homeassistant
         
-switch:
-
-  - platform: command_line
-    switches:
-      tv_switch:
-        command_on: 'curl "http://192.168.1.150:8080/json.htm?type=command&param=switchlight&idx=126&switchcmd=On"'
-        command_off: 'curl "http://192.168.1.150:8080/json.htm?type=command&param=switchlight&idx=126&switchcmd=Off"'
-        friendly_name: Prise TV
-      nuc_flash_green:
-        command_on: 'curl "http://192.168.1.41:9000/hooks/led?id=ring&bright=20&blink=fade_medium&color=green"'
-        command_off: 'curl "http://192.168.1.41:9000/hooks/led?id=ring&bright=10&blink=none&color=blue"'
-        friendly_name: Nuc flash green
-      buanderie_switch:
-        command_on: 'curl "http://192.168.1.150:8080/json.htm?type=command&param=switchlight&idx=262&switchcmd=On"'
-        command_off: 'curl "http://192.168.1.150:8080/json.htm?type=command&param=switchlight&idx=262&switchcmd=Off"'
-        friendly_name: Buanderie
-
-  - platform: mqtt
-    name: "Prise sonoff"
-    command_topic: "cmnd/sonoff-7184/POWER"
-    state_topic: "stat/sonoff-7184/RESULT"
-    value_template: "{{value_json.POWER}}"
-    payload_off: "OFF"
-    payload_on: "ON"
-    availability_topic: "tele/sonoff-7184/LWT"
-    payload_available: "Connecté"
-    payload_not_available: "Déconnecté"
-    qos: 1
-    retain: true
+switch: !include_dir_merge_list switchs/
 
 light: !include_dir_merge_list lights/
-             
-emulated_hue:
-  ##host_ip: 192.168.1.41
-  ##listen_port: 8300
-  expose_by_default: false
-  exposed_domains:
-    - switch
-    - light    
-  entities:
-     switch.tv:
-      name: "Télé"
-      hidden: false
-     switch.ventilo:
-      name: "Ventilateur"
-      hidden: false
-     switch.fan_silent:
-      name: "Ventilateur Silencieux"
-      hidden: false
-     switch.ilife:
-      name: "Aspirateur"
-      hidden: false
-     switch.une:
-      name: "une"
-      hidden: false
-     switch.deux:
-      name: "deux"
-      hidden: false
-     switch.trois:
-      name: "trois"
-      hidden: false
-     switch.cinq:
-      name: "cinq"
-      hidden: false
-     switch.six:
-      name: "six"
-      hidden: false
-     switch.quinze:
-      name: "quinze"
-      hidden: false
-     switch.trois_region:
-      name: "trois region"
-      hidden: false
-     switch.prise_meuble_salon:
-      name: "Prise meuble salon"
-      hidden: false
-     switch.prise_sonoff:
-      name: "Prise sonoff"
-      hidden: false
-     light.yeelight_color2_7c49ebae8646:
-      name: "Lumiere canape"
-      hidden: false
-     light.yeelight_color2_7c49ebb312ce:
-      name: "Lumiere barbecue"
-      hidden: false
-     light.yeelight_color2_7c49ebb318f9:
-      name: "Lumiere table terrasse"
-      hidden: false
-     group.meuble:
-      name: meuble
-      hidden: false
    
 group: !include groups.yaml
 automation: !include_dir_merge_list automations/

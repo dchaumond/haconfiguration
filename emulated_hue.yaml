@@ -1,0 +1,60 @@
+# Emulated hue configuiration     
+emulated_hue:
+  ##host_ip: 192.168.1.41
+  ##listen_port: 8300
+  expose_by_default: false
+  exposed_domains:
+    - switch
+    - light    
+  entities:
+     switch.tv:
+      name: "Télé"
+      hidden: false
+     switch.ventilo:
+      name: "Ventilateur"
+      hidden: false
+     switch.fan_silent:
+      name: "Ventilateur Silencieux"
+      hidden: false
+     switch.ilife:
+      name: "Aspirateur"
+      hidden: false
+     switch.une:
+      name: "une"
+      hidden: false
+     switch.deux:
+      name: "deux"
+      hidden: false
+     switch.trois:
+      name: "trois"
+      hidden: false
+     switch.cinq:
+      name: "cinq"
+      hidden: false
+     switch.six:
+      name: "six"
+      hidden: false
+     switch.quinze:
+      name: "quinze"
+      hidden: false
+     switch.trois_region:
+      name: "trois region"
+      hidden: false
+     switch.prise_meuble_salon:
+      name: "Prise meuble salon"
+      hidden: false
+     switch.prise_sonoff:
+      name: "Prise sonoff"
+      hidden: false
+     light.yeelight_color2_7c49ebae8646:
+      name: "Lumiere canape"
+      hidden: false
+     light.yeelight_color2_7c49ebb312ce:
+      name: "Lumiere barbecue"
+      hidden: false
+     light.yeelight_color2_7c49ebb318f9:
+      name: "Lumiere table terrasse"
+      hidden: false
+     group.meuble:
+      name: meuble
+      hidden: false
