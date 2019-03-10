@@ -174,7 +174,7 @@ script:
       - service: remote.send_command
         entity_id: remote.salon
         data:
-          device: 46634160
+          device: 61098135
           command: 0
           
   channel_une:
@@ -182,7 +182,7 @@ script:
       - service: remote.send_command
         entity_id: remote.salon
         data:
-          device: 46634160
+          device: 61098135
           command: 1
 
   channel_deux:
@@ -190,7 +190,7 @@ script:
       - service: remote.send_command
         entity_id: remote.salon
         data:
-          device: 46634160
+          device: 61098135
           command: 2
 
   channel_trois:
@@ -198,7 +198,7 @@ script:
       - service: remote.send_command
         entity_id: remote.salon
         data:
-          device: 46634160
+          device: 61098135
           command: 3
 
   channel_cinq:
@@ -206,7 +206,7 @@ script:
       - service: remote.send_command
         entity_id: remote.salon
         data:
-          device: 46634160
+          device: 61098135
           command: 5
 
   channel_six:
@@ -214,7 +214,7 @@ script:
       - service: remote.send_command
         entity_id: remote.salon
         data:
-          device: 46634160
+          device: 61098135
           command: 6
 
   channel_quinze:
@@ -222,7 +222,7 @@ script:
       - service: remote.send_command
         entity_id: remote.salon
         data:
-          device: 46634160
+          device: 61098135
           command:
             - 1
             - 5
@@ -232,7 +232,7 @@ script:
       - service: remote.send_command
         entity_id: remote.salon
         data:
-          device: 46634160
+          device: 61098135
           command:
             - 3
             - 1

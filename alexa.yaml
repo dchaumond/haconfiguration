@@ -1,19 +1,30 @@
 # Alexa, "smart home" version
 alexa:
+  endpoint: http://api-amazonalexa.com//v3/events
   smart_home:
     filter:
       include_entities:
         - sensor.dz_sonde_salon
         - sensor.dz_sonde_terrasse
-        - binary_sensor.motion_sensor_158d0001e542b5
-        - binary_sensor.door_window_sensor_158d0001bc41d3
+        #- binary_sensor.motion_sensor_158d0001e542b5
+        #- binary_sensor.door_window_sensor_158d0001bc41d3
         #- light.yeelight_color2_7c49ebae8646
-        - switch.sonoff6674
-        - switch.sonoff7184
-        - switch.sonoff7339
-        - climate.thermostat_confort
+        #- switch.sonoff6674
+        #- switch.sonoff7184
+        #- switch.sonoff7339
+        #- climate.thermostat_confort
         #- climate.thermostat_eco
         #- climate.thermostat_bain
+        - switch.ventilo
+        - switch.fan_silent
+        - switch.ilife
+        - switch.une
+        - switch.deux
+        - switch.trois
+        - switch.cinq
+        - switch.six
+        - switch.quinze
+        - switch.trois_region
       #include_domains:
       #  - sensor
       #  - switch
@@ -27,6 +38,18 @@ alexa:
       sensor.dz_sonde_terrasse:
         name: Temperature Terrasse
         description: Home Assistant - dz Sonde terrasse
-      climate.thermostat_confort:
-        name: Thermostat confort
-        description: Home Assistant - thermostat confort
+      switch.ventilo:  
+        name: Ventilateur
+        description: Home Assistant - Ventilateur
+      switch.fan_silent:  
+        name: Ventilateur Silencieux
+        description: Home Assistant - Ventilateur Silencieux
+      switch.ilife:
+        name: Aspirateur
+        description: Home Assistant - Aspirateur
+      #binary_sensor.door_window_sensor_158d0001bc41d3:
+      #  name: Fenetre salon ha
+      #  description: Home Assistant - Fenetre salon
+      #climate.thermostat_confort:
+      #  name: Thermostat confort
+      #  description: Home Assistant - thermostat confort

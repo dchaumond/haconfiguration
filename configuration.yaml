@@ -20,6 +20,8 @@ homeassistant:
     thermostat: !include thermostat.yaml
     alexa: !include alexa.yaml
     emulated_hue: !include emulated_hue.yaml
+    # Weather underground is no more available for free ...
+    #weather: !include weather.yaml
   
 # Enables the frontend
 frontend:
@@ -68,27 +70,8 @@ map:
 # Track the sun
 sun:
 
-# Weather prediction
+# 
 sensor:
-  - platform: yr
-  - platform: wunderground
-    api_key: !secret wunderground_api_key
-    pws_id: !secret wunderground_pws_id
-    lang: FR
-    monitored_conditions:
-      - location
-      - alerts
-      - weather
-      - temp_c
-      - weather_1d_metric
-      - weather_1n_metric
-      - weather_2d_metric
-      - weather_2n_metric
-      - weather_3d_metric
-      - weather_3n_metric
-      - weather_4d_metric
-      - weather_4n_metric
-
   - platform: template
     sensors:
       salon:

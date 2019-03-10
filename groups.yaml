@@ -75,19 +75,19 @@ terrasse:
     - light.yeelight_color2_7c49ebb312ce
     - light.yeelight_color2_7c49ebb318f9
 
-daily_forecast:
-    name: Meteo a venir
-    entities:
-      - sensor.pws_temp_c
-      - sensor.pws_location
-      - sensor.pws_weather_1d_metric
-      - sensor.pws_weather_1n_metric
-      - sensor.pws_weather_2d_metric
-      - sensor.pws_weather_2n_metric
-      - sensor.pws_weather_3d_metric
-      - sensor.pws_weather_3n_metric
-      - sensor.pws_weather_4d_metric
-      - sensor.pws_weather_4n_metric
+#daily_forecast:
+#    name: Meteo a venir
+#    entities:
+#      - sensor.pws_temp_c
+#      - sensor.pws_location
+#      - sensor.pws_weather_1d_metric
+#      - sensor.pws_weather_1n_metric
+#      - sensor.pws_weather_2d_metric
+#      - sensor.pws_weather_2n_metric
+#      - sensor.pws_weather_3d_metric
+#      - sensor.pws_weather_3n_metric
+#      - sensor.pws_weather_4d_metric
+#      - sensor.pws_weather_4n_metric
     
 home_view:
   name: Maison
