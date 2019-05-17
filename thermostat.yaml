@@ -5,7 +5,6 @@ climate:
     current_temperature_topic: 'home/thermostat/18/state'
     temperature_state_topic: 'home/thermostat/18/state'
     #availability_topic: 'home/thermostat/18/state'
-    unit_of_measurement: '°C'
     modes: 
       - "off"
       - "cool"
@@ -20,7 +19,6 @@ climate:
     temperature_command_topic: 'home/thermostat/19/target'
     current_temperature_topic: 'home/thermostat/19/state'
     temperature_state_topic: 'home/thermostat/19/state'
-    unit_of_measurement: '°C'
     retain: true
 
   - platform: mqtt
@@ -28,5 +26,4 @@ climate:
     temperature_command_topic: 'home/thermostat/44/target'
     current_temperature_topic: 'home/thermostat/44/state'
     temperature_state_topic: 'home/thermostat/44/state'
-    unit_of_measurement: '°C'
     retain: true
