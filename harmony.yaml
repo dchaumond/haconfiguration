@@ -1,3 +1,8 @@
+remote:
+  - platform: harmony
+    name: Salon
+    host: 192.168.1.122
+
 input_boolean:
   ventilo_state:
     name: Ventilo state
@@ -20,6 +25,19 @@ switch:
           data:
             entity_id: remote.salon
             activity: 'TV'
+        turn_off:
+          service: remote.turn_on
+          data:
+            entity_id: remote.salon
+            activity: 'PowerOff'
+      # Box android + ampli
+      box:
+        value_template: "{{ is_state_attr('remote.salon', 'current_activity', 'Android amp') }}"
+        turn_on:
+          service: remote.turn_on
+          data:
+            entity_id: remote.salon
+            activity: 'Android amp'
         turn_off:
           service: remote.turn_on
           data:

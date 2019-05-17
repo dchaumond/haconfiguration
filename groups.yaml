@@ -47,9 +47,9 @@ switchs:
   name: Commandes
   entities:
     - binary_sensor.switch_158d0001d62031
-    - switch.sonoff6674
-    - switch.sonoff7184
-    - switch.sonoff7339
+    #- switch.sonoff_6674
+    #- switch.sonoff_7184
+    #- switch.sonoff_7339
  
 lights:
   name: Lumieres

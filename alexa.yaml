@@ -9,9 +9,9 @@ alexa:
         #- binary_sensor.motion_sensor_158d0001e542b5
         #- binary_sensor.door_window_sensor_158d0001bc41d3
         #- light.yeelight_color2_7c49ebae8646
-        #- switch.sonoff6674
-        #- switch.sonoff7184
-        #- switch.sonoff7339
+        - switch.sonoff_6674
+        - switch.sonoff_7184
+        - switch.sonoff_7339
         #- climate.thermostat_confort
         #- climate.thermostat_eco
         #- climate.thermostat_bain
@@ -25,6 +25,7 @@ alexa:
         - switch.six
         - switch.quinze
         - switch.trois_region
+        - switch.box
       #include_domains:
       #  - sensor
       #  - switch

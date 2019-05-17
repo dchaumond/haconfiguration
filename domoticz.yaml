@@ -35,10 +35,6 @@ switch:
         command_on: 'curl "http://192.168.1.150:8080/json.htm?type=command&param=switchlight&idx=126&switchcmd=On"'
         command_off: 'curl "http://192.168.1.150:8080/json.htm?type=command&param=switchlight&idx=126&switchcmd=Off"'
         friendly_name: Prise TV
-      nuc_flash_green:
-        command_on: 'curl "http://192.168.1.41:9000/hooks/led?id=ring&bright=20&blink=fade_medium&color=green"'
-        command_off: 'curl "http://192.168.1.41:9000/hooks/led?id=ring&bright=10&blink=none&color=blue"'
-        friendly_name: Nuc flash green
       buanderie_switch:
         command_on: 'curl "http://192.168.1.150:8080/json.htm?type=command&param=switchlight&idx=262&switchcmd=On"'
         command_off: 'curl "http://192.168.1.150:8080/json.htm?type=command&param=switchlight&idx=262&switchcmd=Off"'
