@@ -7,9 +7,9 @@ emulated_hue:
     - switch
     - light    
   entities:
-     switch.tv:
-      name: "Télé"
-      hidden: false
+     #switch.tv:
+     # name: "Télé"
+     # hidden: false
      #switch.ventilo:
      # name: "Ventilateur"
      # hidden: false

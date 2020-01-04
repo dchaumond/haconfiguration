@@ -17,9 +17,11 @@ homeassistant:
   packages: 
     domoticz: !include domoticz.yaml
     harmony: !include harmony.yaml
+    roborock: !include roborock.yaml
     thermostat: !include thermostat.yaml
     alexa: !include alexa.yaml
     emulated_hue: !include emulated_hue.yaml
+    broadlink: !include broadlink.yaml
     # Weather underground is no more available for free ...
     #weather: !include weather.yaml
   
@@ -59,7 +61,7 @@ history:
 logger: 
   default: critical
   #logs:
-  #  homeassistant.components.alexa.smart_home: debug
+    #homeassistant.components.alexa.smart_home: debug
 
 # View all events in a logbook
 logbook:

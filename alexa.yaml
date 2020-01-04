@@ -15,6 +15,7 @@ alexa:
         #- climate.thermostat_confort
         #- climate.thermostat_eco
         #- climate.thermostat_bain
+        - switch.tv
         - switch.ventilo
         - switch.fan_silent
         - switch.ilife
@@ -26,6 +27,10 @@ alexa:
         - switch.quinze
         - switch.trois_region
         - switch.box
+        - cover.portail
+        - cover.portail_pieton
+        - input_boolean.clean_kitchen
+        - input_boolean.clean_carpet
       #include_domains:
       #  - sensor
       #  - switch
@@ -33,13 +38,16 @@ alexa:
       exclude_entities:
         - switch.nuc_flash_green
     entity_config:
+      switch.tv:
+        name: Télé
+        description: Home Assistant - tv (harmony)
       sensor.dz_sonde_salon:
         name: Temperature Salon Télé
         description: Home Assistant - dz Sonde salon
       sensor.dz_sonde_terrasse:
         name: Temperature Terrasse
         description: Home Assistant - dz Sonde terrasse
-      switch.ventilo:  
+      switch.ventilo:
         name: Ventilateur
         description: Home Assistant - Ventilateur
       switch.fan_silent:  
@@ -48,6 +56,18 @@ alexa:
       switch.ilife:
         name: Aspirateur
         description: Home Assistant - Aspirateur
+      cover.portail:
+        name: Portail 
+        description: Home Assistant - Portail
+      cover.portail_pieton:
+        name: Portail pieton
+        description: Home Assistant - Portail Pieton
+      input_boolean.clean_kitchen:
+        name: Nettoyer cuisine
+        description: Home Assistant - Nettoyer cuisine
+      input_boolean.clean_carpet:
+        name: Nettoyer tapis
+        description: Home Assistant - Nettoyer tapis
       #binary_sensor.door_window_sensor_158d0001bc41d3:
       #  name: Fenetre salon ha
       #  description: Home Assistant - Fenetre salon
