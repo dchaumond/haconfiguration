@@ -5,7 +5,8 @@ desk:
     - binary_sensor.motion_sensor_158d0001e542b5
     - binary_sensor.door_window_sensor_158d0001bc41d3
     - light.yeelight_color2_7c49ebae8646
-    - light.gateway_light_7811dcb2472f   
+    - light.gateway_light_7811dcb2472f
+    - light.yeelight_canape
     - switch.tv_switch
     - switch.prise_sonoff
     - sensor.dz_sonde_salon

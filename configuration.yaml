@@ -51,6 +51,7 @@ discovery:
   ignore:
     - plex_mediaserver
     - philips_hue
+    - yeelight
    
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
@@ -58,8 +59,9 @@ conversation:
 # Enables support for tracking state changes over time
 history:
 
-logger: 
+logger:
   default: critical
+  #default: info
   #logs:
     #homeassistant.components.alexa.smart_home: debug
 
@@ -91,6 +93,7 @@ xiaomi_aqara:
    gateways:
      - key: !secret xiaomi_aqara_key
        mac: !secret xiaomi_aqara_mac
+       host: !secret xiaomi_aqara_host
 
 #MQTT
 mqtt:
@@ -102,7 +105,7 @@ mqtt:
 switch: !include_dir_merge_list switchs/
 
 light: !include_dir_merge_list lights/
-   
+
 group: !include groups.yaml
 automation: !include_dir_merge_list automations/
 script: !include scripts.yaml
