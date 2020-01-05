@@ -60,7 +60,8 @@ conversation:
 history:
 
 logger:
-  default: critical
+  #default: critical
+  default: error
   #default: info
   #logs:
     #homeassistant.components.alexa.smart_home: debug
