@@ -1,0 +1,43 @@
+#
+# MQTT - DZ autodiscover sensors
+#
+- alias: domoticz_sensor_state_temp
+  initial_state: true
+  trigger:
+     - platform: mqtt
+       topic: 'domoticz/out'
+  condition: 
+     condition: template
+     value_template: '{{ trigger.payload_json.dtype == "Temp" }}'
+  action:
+     - service: mqtt.publish
+       data_template:
+         topic: 'homeassistant/sensor/dz_sensor_{{ trigger.payload_json.idx }}/state'
+         payload_template: '{{ trigger.payload_json.svalue1 }}'
+     - condition: template
+       value_template: '{{ states("sensor.dz_sensor_"+trigger.payload_json.idx|string) == "unknown" }}'
+     - service: mqtt.publish
+       data_template:
+         topic: 'homeassistant/sensor/dz_sensor_{{ trigger.payload_json.idx }}/config'
+         payload_template: '{"name":"{{ trigger.payload_json.name|string }} (dz)","state_topic":"homeassistant/sensor/dz_sensor_{{ trigger.payload_json.idx|string }}/state","unit_of_measurement":"°C"}'
+
+- alias: domoticz_sensor_state_thum
+  initial_state: true
+  trigger:
+     - platform: mqtt
+       topic: 'domoticz/out'
+  condition: 
+     condition: template
+     value_template: '{{ trigger.payload_json.dtype == "Temp + Humidity" }}'
+  action:
+     - service: mqtt.publish
+       data_template:
+         topic: 'homeassistant/sensor/dz_sensor_{{ trigger.payload_json.idx }}/state'
+         payload_template: '{{ trigger.payload_json.svalue1 }}'
+     - condition: template
+       value_template: '{{ states("sensor.dz_sensor_"+trigger.payload_json.idx|string) == "unknown" }}'
+     - service: mqtt.publish
+       data_template:
+         topic: 'homeassistant/sensor/dz_sensor_{{ trigger.payload_json.idx }}/config'
+         payload_template: '{"name":"{{ trigger.payload_json.name|string }} (dz)","state_topic":"homeassistant/sensor/dz_sensor_{{ trigger.payload_json.idx|string }}/state","unit_of_measurement":"°C"}'
+

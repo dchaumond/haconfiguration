@@ -4,8 +4,6 @@ alexa:
   smart_home:
     filter:
       include_entities:
-        - sensor.dz_sonde_salon
-        - sensor.dz_sonde_terrasse
         #- binary_sensor.motion_sensor_158d0001e542b5
         #- binary_sensor.door_window_sensor_158d0001bc41d3
         #- light.yeelight_color2_7c49ebae8646
@@ -41,12 +39,6 @@ alexa:
       switch.tv:
         name: Télé
         description: Home Assistant - tv (harmony)
-      sensor.dz_sonde_salon:
-        name: Temperature Salon Télé
-        description: Home Assistant - dz Sonde salon
-      sensor.dz_sonde_terrasse:
-        name: Temperature Terrasse
-        description: Home Assistant - dz Sonde terrasse
       switch.ventilo:
         name: Ventilateur
         description: Home Assistant - Ventilateur

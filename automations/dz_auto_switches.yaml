@@ -1,0 +1,34 @@
+#
+# MQTT - Domoticz switches autodiscovery and power command
+#
+- alias: domoticz_switch_state
+  initial_state: true
+  trigger:
+     - platform: mqtt
+       topic: 'domoticz/out'
+  condition:
+     condition: template
+     value_template: '{{ trigger.payload_json.dtype == "Light/Switch" }}'
+  action:
+     - service: mqtt.publish
+       data_template:
+         topic: 'homeassistant/switch/dz_switch_{{ trigger.payload_json.idx }}/state'
+         payload_template: '{% if trigger.payload_json.nvalue == 1 %} On {% else %} Off {% endif %}'
+     - condition: template
+       value_template: '{{ states("switch.dz_switch_"+trigger.payload_json.idx|string) == "unknown" }}'
+     - service: mqtt.publish
+       data_template:
+         topic: 'homeassistant/switch/dz_switch_{{ trigger.payload_json.idx }}/config'
+         payload_template: '{"name":"{{ trigger.payload_json.name|string }} (dz)","command_topic":"homeassistant/switch/dz_switch_{{ trigger.payload_json.idx|string }}/power","state_topic":"homeassistant/switch/dz_switch_{{ trigger.payload_json.idx|string }}/state","payload_off":"Off","payload_on":"On"}'
+ 
+- alias: domoticz_switch_power
+  initial_state: true
+  #hide_entity: false
+  trigger:
+     - platform: mqtt
+       topic: 'homeassistant/switch/+/power'
+  action:
+     - service: mqtt.publish
+       data_template:
+         topic: 'domoticz/in'
+         payload_template: '{"command": "switchlight", "idx": {{ trigger.topic.split("/")[-2][9:] }}, "switchcmd": "{{ trigger.payload }}" }'

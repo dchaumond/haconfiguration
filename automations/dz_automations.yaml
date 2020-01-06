@@ -1,59 +1,6 @@
 #
 # MQTT - DZ
 #        
-- alias: DZ temp
-  initial_state: true
-  #hide_entity: false
-  trigger:
-     - platform: mqtt
-       topic: 'domoticz/out'
-  condition: 
-     condition: template
-     value_template: '{{ trigger.payload_json.dtype == "Temp" }}'
-  action:
-     - service: mqtt.publish
-       data_template:
-         topic: 'home/sensor/{{ trigger.payload_json.idx }}/temp'
-         payload_template: '{{ trigger.payload_json.svalue1 }}'
-                
-- alias: DZ temp+humidity
-  initial_state: true
-  #hide_entity: false
-  trigger:
-     - platform: mqtt
-       topic: 'domoticz/out'
-  condition: 
-     condition: template
-     value_template: '{{ trigger.payload_json.dtype == "Temp + Humidity" }}'
-  action:
-     - service: mqtt.publish
-       data_template:
-         topic: 'home/sensor/{{ trigger.payload_json.idx }}/temp'
-         payload_template: '{{ trigger.payload_json.svalue1 }}'
-     - service: mqtt.publish
-       data_template:
-         topic: 'home/sensor/{{ trigger.payload_json.idx }}/hum'
-         payload_template: '{{ trigger.payload_json.svalue2 }}'
-     - service: mqtt.publish
-       data_template:
-         topic: 'home/sensor/{{ trigger.payload_json.name }}/temp'
-         payload_template: '{{ trigger.payload_json.svalue1 }}'
-                
-- alias: DZ switches
-  initial_state: true
-  #hide_entity: false
-  trigger:
-     - platform: mqtt
-       topic: 'domoticz/out'
-  condition: 
-     condition: template
-     value_template: '{{ trigger.payload_json.dtype == "Light/Switch" }}'
-  action:
-     - service: mqtt.publish
-       data_template:
-         topic: 'home/switch/{{ trigger.payload_json.idx }}/state'
-         payload_template: '{% if trigger.payload_json.nvalue == 1 %} On {% else %} Off {% endif %}'
-                        
 - alias: DZ thermostat get value
   initial_state: true
   #hide_entity: false

@@ -9,16 +9,13 @@ desk:
     - light.yeelight_canape
     - switch.tv_switch
     - switch.prise_sonoff
-    - sensor.dz_sonde_salon
     
 temperature:
   name: Temperature
   entities:
-    - sensor.dz_sonde_terrasse
     - sensor.temperature_158d0002239fad
     - sensor.humidity_158d0002239fad
     - sensor.pressure_158d0002239fad
-    - sensor.dz_sonde_chambre_haut
     - sensor.temperature_158d0001f238fe
     - sensor.humidity_158d0001f238fe   
     - sensor.pressure_158d0001f238fe
