@@ -49,13 +49,13 @@ emulated_hue:
      switch.sonoff_cuisine:
       name: "Eclairage cuisine"
       hidden: false
-     light.yeelight_color2_7c49ebae8646:
+     light.yeelight_canape:
       name: "Lumiere canape"
       hidden: false
-     light.yeelight_color2_7c49ebb312ce:
+     light.yeelight_terrasse_bbcue:
       name: "Lumiere barbecue"
       hidden: false
-     light.yeelight_color2_7c49ebb318f9:
+     light.yeelight_terrasse_salon:
       name: "Lumiere table terrasse"
       hidden: false
      group.meuble:

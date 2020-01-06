@@ -63,6 +63,7 @@ logger:
   #default: critical
   default: error
   #default: info
+  #default: debug
   #logs:
     #homeassistant.components.alexa.smart_home: debug
 
@@ -106,6 +107,7 @@ mqtt:
 switch: !include_dir_merge_list switchs/
 
 light: !include_dir_merge_list lights/
+yeelight: !include yeelight.yaml
 
 group: !include groups.yaml
 automation: !include_dir_merge_list automations/

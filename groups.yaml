@@ -4,7 +4,6 @@ desk:
     - binary_sensor.switch_158d0001d62031
     - binary_sensor.motion_sensor_158d0001e542b5
     - binary_sensor.door_window_sensor_158d0001bc41d3
-    - light.yeelight_color2_7c49ebae8646
     - light.gateway_light_7811dcb2472f
     - light.yeelight_canape
     - switch.tv_switch
@@ -53,25 +52,25 @@ lights:
   name: Lumieres
   entities:
     - light.gateway_light_7811dcb2472f
-    - light.yeelight_color2_7c49ebae8646
-    - light.yeelight_color2_7c49ebb312ce
-    - light.yeelight_color2_7c49ebb318f9
-    - light.yeelight_color2_04cf8c7bf62e
-    - light.yeelight_color2_04cf8c7bfa5f
-    - light.yeelight_color2_04cf8c7cb967
+    - light.yeelight_canape
+    - light.yeelight_meuble1
+    - light.yeelight_meuble2
+    - light.yeelight_meuble3
+    - light.yeelight_terrasse_salon
+    - light.yeelight_terrasse_bbcue
     
 meuble:
   name: Lumieres meuble
   entities:
-    - light.yeelight_color2_04cf8c7bf62e
-    - light.yeelight_color2_04cf8c7bfa5f
-    - light.yeelight_color2_04cf8c7cb967
+    - light.yeelight_meuble1
+    - light.yeelight_meuble2
+    - light.yeelight_meuble3
     
 terrasse:    
   name: Lumieres terrasse
   entities:
-    - light.yeelight_color2_7c49ebb312ce
-    - light.yeelight_color2_7c49ebb318f9
+    - light.yeelight_terrasse_salon
+    - light.yeelight_terrasse_bbcue
 
 #daily_forecast:
 #    name: Meteo a venir
