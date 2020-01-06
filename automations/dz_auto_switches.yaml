@@ -31,4 +31,4 @@
      - service: mqtt.publish
        data_template:
          topic: 'domoticz/in'
-         payload_template: '{"command": "switchlight", "idx": {{ trigger.topic.split("/")[-2][9:] }}, "switchcmd": "{{ trigger.payload }}" }'
+         payload_template: '{"command": "switchlight", "idx": {{ trigger.topic.split("/")[-2][10:] }}, "switchcmd": "{{ trigger.payload }}" }'
