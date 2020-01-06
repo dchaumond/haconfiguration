@@ -20,6 +20,7 @@ alexa:
         - switch.une
         - switch.deux
         - switch.trois
+        - switch.quatre
         - switch.cinq
         - switch.six
         - switch.quinze

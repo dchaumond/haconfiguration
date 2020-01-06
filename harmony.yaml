@@ -93,6 +93,14 @@ switch:
         turn_off:
           service: script.turn_on
           entity_id: script.channel_off
+      quatre:
+        value_template: "{{ is_state('script.channel_quatre', 'on')}}"
+        turn_on:
+          service: script.turn_on
+          entity_id: script.channel_quatre
+        turn_off:
+          service: script.turn_on
+          entity_id: script.channel_off
       cinq:
         value_template: "{{ is_state('script.channel_cinq', 'on')}}"
         turn_on:
@@ -218,6 +226,14 @@ script:
         data:
           device: 61098135
           command: 3
+
+  channel_quatre:
+    sequence:
+      - service: remote.send_command
+        entity_id: remote.salon
+        data:
+          device: 61098135
+          command: 4
 
   channel_cinq:
     sequence:
