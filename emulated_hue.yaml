@@ -40,7 +40,7 @@ emulated_hue:
      #switch.trois_region:
      # name: "trois region"
      # hidden: false
-     switch.meuble_salon_dz:
+     switch.tv_switch:
       name: "Prise meuble salon"
       hidden: false
      switch.prise_sonoff:
