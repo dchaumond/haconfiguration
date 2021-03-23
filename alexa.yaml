@@ -23,6 +23,8 @@ alexa:
         - switch.quatre
         - switch.cinq
         - switch.six
+        - switch.sept
+        - switch.dix
         - switch.quinze
         - switch.trois_region
         - switch.box
@@ -30,6 +32,7 @@ alexa:
         - cover.portail_pieton
         - input_boolean.clean_kitchen
         - input_boolean.clean_carpet
+        - switch.sonoff_cuisine
       #include_domains:
       #  - sensor
       #  - switch
@@ -67,3 +70,6 @@ alexa:
       #climate.thermostat_confort:
       #  name: Thermostat confort
       #  description: Home Assistant - thermostat confort
+      switch.sonoff_cuisine:
+        name: Eclairage Cuisine
+        description: Home Assistant - Cuisine
