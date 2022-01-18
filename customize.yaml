@@ -50,10 +50,10 @@ binary_sensor.door_window_sensor_1580001c1d0001c1d94d:
   friendly_name: Switch
 light.gateway_light_7811dcb2472f:
   friendly_name: Xiaomi gw light
-sensor.pws_weather:
-  friendly_name: Resume
-sensor.pws_temp_c:
-  friendly_name: Temperature
+###sensor.pws_weather:
+###  friendly_name: Resume
+###sensor.pws_temp_c:
+###  friendly_name: Temperature
 light.yeelight_color2_7c49ebae8646:
   friendly_name: Lumiere canape
 light.yeelight_color2_7c49ebb312ce:

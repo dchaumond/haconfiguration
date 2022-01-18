@@ -21,7 +21,7 @@ homeassistant:
     thermostat: !include thermostat.yaml
     alexa: !include alexa.yaml
     emulated_hue: !include emulated_hue.yaml
-    broadlink: !include broadlink.yaml
+    ###broadlink: !include broadlink.yaml
     # Weather underground is no more available for free ...
     #weather: !include weather.yaml
   auth_providers:
@@ -47,7 +47,6 @@ updater:
 # Discover some devices automatically
 discovery:
   ignore:
-    - plex_mediaserver
     - philips_hue
     - yeelight
    
@@ -73,6 +72,9 @@ map:
 
 # Track the sun
 sun:
+
+# Mobile
+mobile_app:
 
 # 
 sensor:
