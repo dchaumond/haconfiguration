@@ -33,6 +33,9 @@ alexa:
         - input_boolean.clean_kitchen
         - input_boolean.clean_carpet
         - switch.sonoff_cuisine
+        - switch.mode_confort_jour_dz
+        - switch.mode_confort_nuit_dz
+        - switch.mode_confort_bain_dz
       #include_domains:
       #  - sensor
       #  - switch
@@ -46,6 +49,15 @@ alexa:
       switch.ventilo:
         name: Ventilateur
         description: Home Assistant - Ventilateur
+      switch.mode_confort_jour_dz:
+        name: Mode confort jour
+        description: Home Assistant (dz) - Mode confort jour
+      switch.mode_confort_nuit_dz:
+        name: Mode confort nuit
+        description: Home Assistant (dz) - Mode confort nuit
+      switch.mode_confort_bain_dz:
+        name: Mode confort bain
+        description: Home Assistant (dz) - Mode confort bain
       switch.fan_silent:  
         name: Ventilateur Silencieux
         description: Home Assistant - Ventilateur Silencieux
