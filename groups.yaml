@@ -5,7 +5,7 @@ desk:
     - binary_sensor.motion_sensor_158d0001e542b5
     - binary_sensor.door_window_sensor_158d0001bc41d3
     - light.gateway_light_7811dcb2472f
-    - light.yeelight_canape
+    - light.yeelight_color_0x5e29864
     - switch.tv_switch
     - switch.prise_sonoff
     
@@ -52,25 +52,30 @@ lights:
   name: Lumieres
   entities:
     - light.gateway_light_7811dcb2472f
-    - light.yeelight_canape
-    - light.yeelight_meuble1
-    - light.yeelight_meuble2
-    - light.yeelight_meuble3
+    - light.yeelight_color_0x5e29864
+    - light.yeelight_mono5_0x13fd7b56
+    - light.yeelight_mono5_0x13fdaaa3
+    - light.yeelight_mono5_0x13fdc6a2
     - light.yeelight_terrasse_salon
     - light.yeelight_terrasse_bbcue
     
 meuble:
   name: Lumieres meuble
   entities:
-    - light.yeelight_meuble1
-    - light.yeelight_meuble2
-    - light.yeelight_meuble3
+    - light.yeelight_mono5_0x13fd7b56
+    - light.yeelight_mono5_0x13fdaaa3
+    - light.yeelight_mono5_0x13fdc6a2
     
 terrasse:    
   name: Lumieres terrasse
   entities:
     - light.yeelight_terrasse_salon
     - light.yeelight_terrasse_bbcue
+buanderie:    
+  name: Lumieres buanderie
+  entities:
+    - light.yeelight_color_0x7c88700
+    - light.yeelight_color_0x7c88b31
 
 home_view:
   name: Maison

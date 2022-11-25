@@ -1,7 +1,7 @@
 binary_sensor.motion_sensor_158d0001e542b5:
   friendly_name: Detecteur entree
 binary_sensor.motion_sensor_158d000222e329:
-  friendly_name: Detecteur chambre
+  friendly_name: Detecteur buanderie
 sensor.temperature_158d0002239fad:
   friendly_name: Temperature chambre
 sensor.humidity_158d0002239fad:
