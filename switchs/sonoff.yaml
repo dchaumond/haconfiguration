@@ -1,23 +1,22 @@
-- platform: mqtt
-  name: "Prise sonoff"
-  command_topic: "cmnd/sonoff-7184/POWER"
-  state_topic: "stat/sonoff-7184/RESULT"
-  value_template: "{{value_json.POWER}}"
-  payload_off: "OFF"
-  payload_on: "ON"
-  availability_topic: "tele/sonoff-7184/LWT"
-  payload_available: "Connecté"
-  payload_not_available: "Déconnecté"
-  qos: 1
-  retain: true
-  
-- platform: mqtt
-  name: "Sonoff cuisine"
-  command_topic: "cmnd/sonoff-0822/POWER"
-  state_topic: "stat/sonoff-0822/RESULT"
-  value_template: "{{value_json.POWER}}"
-  payload_off: "OFF"
-  payload_on: "ON"
-  availability_topic: "tele/sonoff-0822/LWT"
-  payload_available: "Connecté"
-  payload_not_available: "Déconnecté"
+mqtt:
+  switch:
+    - name: "Prise sonoff"
+      command_topic: "cmnd/sonoff-7184/POWER"
+      state_topic: "stat/sonoff-7184/RESULT"
+      value_template: "{{value_json.POWER}}"
+      payload_off: "OFF"
+      payload_on: "ON"
+      availability_topic: "tele/sonoff-7184/LWT"
+      payload_available: "Connecté"
+      payload_not_available: "Déconnecté"
+      qos: 1
+      retain: true
+    - name: "Sonoff cuisine"
+      command_topic: "cmnd/sonoff-0822/POWER"
+      state_topic: "stat/sonoff-0822/RESULT"
+      value_template: "{{value_json.POWER}}"
+      payload_off: "OFF"
+      payload_on: "ON"
+      availability_topic: "tele/sonoff-0822/LWT"
+      payload_available: "Connecté"
+      payload_not_available: "Déconnecté"
