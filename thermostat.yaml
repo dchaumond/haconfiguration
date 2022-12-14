@@ -1,29 +1,25 @@
-climate:
-  - platform: mqtt
-    name: Thermostat confort
-    temperature_command_topic: 'home/thermostat/18/target'
-    current_temperature_topic: 'home/thermostat/18/state'
-    temperature_state_topic: 'home/thermostat/18/state'
-    #availability_topic: 'home/thermostat/18/state'
-    modes: 
-      - "off"
-      - "cool"
-      - "heat"
-    mode_command_topic: "home/thermostat/18/mode/set"
-    mode_state_topic: "home/thermostat/18/mode/state"
-    mode_state_template: "{{ value_json }}"      
-    retain: true
-
-  - platform: mqtt
-    name: Thermostat eco
-    temperature_command_topic: 'home/thermostat/19/target'
-    current_temperature_topic: 'home/thermostat/19/state'
-    temperature_state_topic: 'home/thermostat/19/state'
-    retain: true
-
-  - platform: mqtt
-    name: Thermostat bain
-    temperature_command_topic: 'home/thermostat/44/target'
-    current_temperature_topic: 'home/thermostat/44/state'
-    temperature_state_topic: 'home/thermostat/44/state'
-    retain: true
+mqtt:
+  climate:
+    - name: Thermostat confort
+      temperature_command_topic: 'home/thermostat/18/target'
+      current_temperature_topic: 'home/thermostat/18/state'
+      temperature_state_topic: 'home/thermostat/18/state'
+      #availability_topic: 'home/thermostat/18/state'
+      modes: 
+        - "off"
+        - "cool"
+        - "heat"
+      mode_command_topic: "home/thermostat/18/mode/set"
+      mode_state_topic: "home/thermostat/18/mode/state"
+      mode_state_template: "{{ value_json }}"      
+      retain: true
+    - name: Thermostat eco
+      temperature_command_topic: 'home/thermostat/19/target'
+      current_temperature_topic: 'home/thermostat/19/state'
+      temperature_state_topic: 'home/thermostat/19/state'
+      retain: true
+    - name: Thermostat bain
+      temperature_command_topic: 'home/thermostat/44/target'
+      current_temperature_topic: 'home/thermostat/44/state'
+      temperature_state_topic: 'home/thermostat/44/state'
+      retain: true

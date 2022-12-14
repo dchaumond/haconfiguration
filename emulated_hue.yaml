@@ -49,6 +49,9 @@ emulated_hue:
      switch.sonoff_cuisine:
       name: "Eclairage cuisine"
       hidden: false
+     switch.tv_audio_switch:
+      name: "Systeme Audio"
+      hidden: false
      light.yeelight_canape:
       name: "Lumiere canape"
       hidden: false
