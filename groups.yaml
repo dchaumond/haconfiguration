@@ -7,7 +7,6 @@ desk:
     - light.gateway_light_7811dcb2472f
     - light.yeelight_color_0x5e29864
     - switch.tv_switch
-    - switch.prise_sonoff
     
 temperature:
   name: Temperature
