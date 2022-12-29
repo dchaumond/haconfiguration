@@ -32,7 +32,7 @@ alexa:
         - cover.portail_pieton
         - input_boolean.clean_kitchen
         - input_boolean.clean_carpet
-        - switch.sonoff_cuisine
+        - switch.sonoff_0822
         - switch.mode_confort_jour_dz
         - switch.mode_confort_nuit_dz
         - switch.mode_confort_bain_dz
