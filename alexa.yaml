@@ -82,6 +82,6 @@ alexa:
       #climate.thermostat_confort:
       #  name: Thermostat confort
       #  description: Home Assistant - thermostat confort
-      switch.sonoff_cuisine:
-        name: Eclairage Cuisine
-        description: Home Assistant - Cuisine
+      # switch.sonoff_cuisine:
+      #   name: Eclairage Cuisine
+      #   description: Home Assistant - Cuisine
