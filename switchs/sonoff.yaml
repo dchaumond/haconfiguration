@@ -1,0 +1,12 @@
+- platform: mqtt
+  name: "Prise sonoff"
+  command_topic: "cmnd/sonoff-7339/POWER"
+  state_topic: "stat/sonoff-7339/RESULT"
+  value_template: "{{value_json.POWER}}"
+  payload_off: "OFF"
+  payload_on: "ON"
+  availability_topic: "tele/sonoff-7339/LWT"
+  payload_available: "Connecté"
+  payload_not_available: "Déconnecté"
+  qos: 1
+  retain: true
