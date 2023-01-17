@@ -1,0 +1,9 @@
+- alias: automation_multiprise_meuble_2
+  trigger:
+    - platform: state
+      entity_id: schedule.schedule_multiprise_meuble_2
+  action:
+      - condition: "{{ trigger.to_state.state in ['on', 'off'] }}"
+      - service: 'switch.turn_{{ trigger.to_state.state }}'
+        target:
+          entity_id: switch.multiprise_meuble_mss425e_multiprise_meuble_2

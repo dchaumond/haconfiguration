@@ -1,0 +1,11 @@
+.DS_Store
+.HA_VERSION
+docker/
+custom_components/
+blueprints/
+tts/
+secrets.yaml
+.storage/
+home-assistant.log*
+home-assistant_v2.db*
+harmony*.conf
