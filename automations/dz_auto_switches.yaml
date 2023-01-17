@@ -19,7 +19,7 @@
      - service: mqtt.publish
        data_template:
          topic: 'homeassistant/switch/dz_switch_{{ trigger.payload_json.idx }}/config'
-         payload_template: '{"name":"{{ trigger.payload_json.name|string }} (dz)","command_topic":"homeassistant/switch/dz_switch_{{ trigger.payload_json.idx|string }}/power","state_topic":"homeassistant/switch/dz_switch_{{ trigger.payload_json.idx|string }}/state","payload_off":"Off","payload_on":"On"}'
+         payload_template: '{"name":"{{ trigger.payload_json.name|string }} (dz)","unique_id":"dz_switch_{{ trigger.payload_json.idx|string }}","command_topic":"homeassistant/switch/dz_switch_{{ trigger.payload_json.idx|string }}/power","state_topic":"homeassistant/switch/dz_switch_{{ trigger.payload_json.idx|string }}/state","payload_off":"Off","payload_on":"On"}'
 
 - alias: domoticz_light_state
   initial_state: true
@@ -39,7 +39,7 @@
      - service: mqtt.publish
        data_template:
          topic: 'homeassistant/switch/dz_switch_{{ trigger.payload_json.idx }}/config'
-         payload_template: '{"name":"{{ trigger.payload_json.name|string }} (dz)","command_topic":"homeassistant/switch/dz_switch_{{ trigger.payload_json.idx|string }}/power","state_topic":"homeassistant/switch/dz_switch_{{ trigger.payload_json.idx|string }}/state","payload_off":"Off","payload_on":"On"}'
+         payload_template: '{"name":"{{ trigger.payload_json.name|string }} (dz)","unique_id":"dz_switch_{{ trigger.payload_json.idx|string }}","command_topic":"homeassistant/switch/dz_switch_{{ trigger.payload_json.idx|string }}/power","state_topic":"homeassistant/switch/dz_switch_{{ trigger.payload_json.idx|string }}/state","payload_off":"Off","payload_on":"On"}'
  
 - alias: domoticz_switch_power
   initial_state: true

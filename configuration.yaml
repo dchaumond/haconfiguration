@@ -18,7 +18,6 @@ homeassistant:
     domoticz: !include domoticz.yaml
     harmony: !include harmony.yaml
     roborock: !include roborock.yaml
-    thermostat: !include thermostat.yaml
     alexa: !include alexa.yaml
     emulated_hue: !include emulated_hue.yaml
     ###broadlink: !include broadlink.yaml

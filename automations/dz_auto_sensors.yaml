@@ -19,7 +19,7 @@
      - service: mqtt.publish
        data_template:
          topic: 'homeassistant/sensor/dz_sensor_{{ trigger.payload_json.idx }}/config'
-         payload_template: '{"name":"{{ trigger.payload_json.name|string }} (dz)","state_topic":"homeassistant/sensor/dz_sensor_{{ trigger.payload_json.idx|string }}/state","unit_of_measurement":"°C"}'
+         payload_template: '{"name":"{{ trigger.payload_json.name|string }} (dz)","unique_id":"dz_sensor_{{ trigger.payload_json.idx|string }}","state_topic":"homeassistant/sensor/dz_sensor_{{ trigger.payload_json.idx|string }}/state","unit_of_measurement":"°C"}'
 
 - alias: domoticz_sensor_state_thum
   initial_state: true
@@ -39,5 +39,5 @@
      - service: mqtt.publish
        data_template:
          topic: 'homeassistant/sensor/dz_sensor_{{ trigger.payload_json.idx }}/config'
-         payload_template: '{"name":"{{ trigger.payload_json.name|string }} (dz)","state_topic":"homeassistant/sensor/dz_sensor_{{ trigger.payload_json.idx|string }}/state","unit_of_measurement":"°C"}'
+         payload_template: '{"name":"{{ trigger.payload_json.name|string }} (dz)","unique_id":"dz_sensor_{{ trigger.payload_json.idx|string }}","state_topic":"homeassistant/sensor/dz_sensor_{{ trigger.payload_json.idx|string }}/state","unit_of_measurement":"°C"}'
 

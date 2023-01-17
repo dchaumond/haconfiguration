@@ -7,9 +7,6 @@ alexa:
         #- binary_sensor.motion_sensor_158d0001e542b5
         #- binary_sensor.door_window_sensor_158d0001bc41d3
         #- light.yeelight_color2_7c49ebae8646
-        - switch.sonoff_6674
-        - switch.sonoff_7184
-        - switch.sonoff_7339
         #- climate.thermostat_confort
         #- climate.thermostat_eco
         #- climate.thermostat_bain
@@ -33,6 +30,7 @@ alexa:
         - input_boolean.clean_kitchen
         - input_boolean.clean_carpet
         - switch.sonoff_0822
+        - switch.sonoff_7339
         - switch.mode_confort_jour_dz
         - switch.mode_confort_nuit_dz
         - switch.mode_confort_bain_dz
