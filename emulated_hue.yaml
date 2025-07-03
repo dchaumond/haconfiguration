@@ -40,16 +40,13 @@ emulated_hue:
      #switch.trois_region:
      # name: "trois region"
      # hidden: false
-     switch.tv_switch:
+     switch.tasmota_7339:
       name: "Prise meuble salon"
       hidden: false
-     switch.prise_sonoff:
-      name: "Prise sonoff"
-      hidden: false
-     switch.sonoff_cuisine:
+     switch.tasmota_5796:
       name: "Eclairage cuisine"
       hidden: false
-     switch.tv_audio_switch:
+     switch.sortie_audio_tv:
       name: "Systeme Audio"
       hidden: false
      light.yeelight_canape:

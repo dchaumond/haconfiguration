@@ -1,0 +1,7 @@
+command_line:
+  - switch:
+      name: "Sortie audio TV"
+      unique_id: tv_audio_switch
+      command_on: "/config/scripts/tv_audio_switch.sh on"
+      command_off: "/config/scripts/tv_audio_switch.sh off"
+

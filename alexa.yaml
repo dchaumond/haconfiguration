@@ -29,11 +29,12 @@ alexa:
         - cover.portail_pieton
         - input_boolean.clean_kitchen
         - input_boolean.clean_carpet
-        - switch.sonoff_0822
-        - switch.sonoff_7339
         - switch.mode_confort_jour_dz
         - switch.mode_confort_nuit_dz
         - switch.mode_confort_bain_dz
+        - switch.tasmota_5796
+        - switch.tasmota_7339
+        - switch.phenix_b_sapin_dz
       #include_domains:
       #  - sensor
       #  - switch
@@ -62,6 +63,12 @@ alexa:
       switch.ilife:
         name: Aspirateur
         description: Home Assistant - Aspirateur
+      switch.tasmota_5796:
+        name: Eclairage Cuisine
+        description: Home Assistant - Tasmota Cuisine
+      switch.tasmota_7339:
+        name: Switch meuble TV
+        description: Home Assistant - Tasmota TV
       cover.portail:
         name: Portail 
         description: Home Assistant - Portail
@@ -77,9 +84,3 @@ alexa:
       #binary_sensor.door_window_sensor_158d0001bc41d3:
       #  name: Fenetre salon ha
       #  description: Home Assistant - Fenetre salon
-      #climate.thermostat_confort:
-      #  name: Thermostat confort
-      #  description: Home Assistant - thermostat confort
-      # switch.sonoff_cuisine:
-      #   name: Eclairage Cuisine
-      #   description: Home Assistant - Cuisine
